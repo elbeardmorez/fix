@@ -4,6 +4,9 @@ a dumping ground for patches which fix functionality
 
 ## projects
 
+### cedet
+-correctly.deal.with.no.available.completions.diff [bzr r8067 | committed]
+
 ### predictive
 -popup.hidden.due.to.line.wrapping.diff [git sha:acaf5d9853c131a00db9732fa93890fa8c1b9d3f | pending]
 -popup.selected.index.double.offset.diff [git sha:acaf5d9853c131a00db9732fa93890fa8c1b9d3f | pending]
@@ -45,3 +48,4 @@ a dumping ground for patches which fix functionality
 -PulseOutputPlugin_.dont.lock.null.thread.diff [git sha:503ed9c331426d625ddcfef25356d222c13af8a | rejected]
 -PulseOutputPlugin_.avoid.locking.mainloop.object.from.within.mainloop.thread.diff [git sha:9da57e7458ed2e539ba1693ca748c0e5c7969585 | committed]
 -MultipleOutputs_.ensure.input_audio_format.is.zero-initialised.diff [git sha:f2f1801c25e3d8d936fcd828a14f5af6d3d862c9 | pending]
+
