@@ -1,0 +1,22 @@
+#------------------------------------------------------------
+#revno: 8068
+#author: Pete Beardmore <elbeardmorez@msn.com>
+#committer: David Engster <dengste@eml.cc>
+#branch nick: trunk
+#timestamp: Fri 2011-06-10 22:55:24 +0200
+#message:
+#  (semantic-idle-local-symbol-highlight): Make sure there actually is a
+#  tag at point. (tiny change)
+=== modified file 'semantic/semantic-idle.el'
+--- semantic/semantic-idle.el	2011-02-08 09:20:41 +0000
++++ semantic/semantic-idle.el	2011-06-10 20:55:24 +0000
+@@ -912,7 +912,7 @@
+ 	   ;; We use pulse, but we don't want the flashy version,
+ 	   ;; just the stable version.
+ 	   (pulse-flag nil))
+-      (when ctxt
++      (when (and ctxt tag)
+ 	;; Highlight the original tag?  Protect against problems.
+ 	(condition-case nil
+ 	    (semantic-idle-symbol-maybe-highlight target)
+
