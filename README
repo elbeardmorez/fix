@@ -8,6 +8,7 @@ a dumping ground for patches which fix functionality
 -correctly.deal.with.no.available.completions.diff [bzr r8067 | committed]
 -make.sure.there.actually.is.a.tag.at.point.diff [bzr r8068 | committed]
 -fix.special.case.for.max-tags.matches.diff [bzr r8074 | committed]
+-fix.case.when.frame.is.partly.off.the.screen.diff [bzr r8075 | committed]
 
 ### predictive
 -popup.hidden.due.to.line.wrapping.diff [git sha:acaf5d9853c131a00db9732fa93890fa8c1b9d3f | pending]

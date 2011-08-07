@@ -12,3 +12,7 @@
 -'semantic-displayor-tooltip'|'semantic-displayor-show-request', fix
 special case when we have exactly 'max-tags' matches for completion
 
+# fix.case.when.frame.is.partly.off.the.screen.diff [bzr r8075 | committed]
+
+-'semantic-displayor-point-position'
+
