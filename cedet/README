@@ -7,3 +7,8 @@
 
 -'semantic-idle-local-symbol-highlight', tiny change
 
+# fix.special.case.for.max-tags.matches.diff [bzr r8074 | committed]
+
+-'semantic-displayor-tooltip'|'semantic-displayor-show-request', fix
+special case when we have exactly 'max-tags' matches for completion
+

@@ -1,0 +1,22 @@
+#------------------------------------------------------------
+#revno: 8074
+#author: Pete Beardmore <elbeardmorez@msn.com>
+#committer: David Engster <dengste@eml.cc>
+#branch nick: trunk
+#timestamp: Sun 2011-08-07 13:34:11 +0100
+#message:
+#  (semantic-displayor-tooltip::semantic-displayor-show-request): Fix
+#  special case when we have exactly 'max-tags' matches for completion.
+=== modified file 'semantic/semantic-complete.el'
+--- semantic/semantic-complete.el	2010-06-06 15:46:08 +0000
++++ semantic/semantic-complete.el	2011-08-07 12:34:11 +0000
+@@ -1631,7 +1631,7 @@
+ 	    (oset obj typing-count (1+ typing-count)))
+ 	;; At this point, we know we have too many items.
+ 	;; Lets be brave, and truncate l
+-	(setcdr (nthcdr (oref obj max-tags) l) nil)
++	(setcdr (nthcdr (1- (oref obj max-tags)) l) nil)
+ 	(setq msg (mapconcat 'identity l "\n"))
+ 	(cond
+ 	 ((= force-show -1)
+
