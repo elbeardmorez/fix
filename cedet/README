@@ -22,3 +22,7 @@ special case when we have exactly 'max-tags' matches for completion
 sure we immediately show more completions after user presses TAB the
 first time
 
+# typo.fixes.diff [bzr r8085 | committed]
+
+-'semantic-idle.el'|'semantic-complete.el', typo fixes
+

@@ -10,6 +10,7 @@ a dumping ground for patches which fix functionality
 -fix.special.case.for.max-tags.matches.diff [bzr r8074 | committed]
 -fix.case.when.frame.is.partly.off.the.screen.diff [bzr r8075 | committed]
 -show.completions.immediately.on.tab.diff [bzr r8084 | committed]
+-typo.fixes.diff [bzr r8085 | committed]
 
 ### predictive
 -popup.hidden.due.to.line.wrapping.diff [git sha:acaf5d9853c131a00db9732fa93890fa8c1b9d3f | pending]

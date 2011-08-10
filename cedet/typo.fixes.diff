@@ -1,0 +1,66 @@
+#------------------------------------------------------------
+#revno: 8085
+#author: Pete Beardmore <elbeardmorez@msn.com>
+#committer: David Engster <dengste@eml.cc>
+#branch nick: trunk
+#timestamp: Wed 2011-08-10 22:20:04 +0200
+#message:
+#  * semantic-idle.el, semantic-complete.el: Typo fixes.
+=== modified file 'semantic/semantic-complete.el'
+--- semantic/semantic-complete.el	2011-08-10 20:12:24 +0000
++++ semantic/semantic-complete.el	2011-08-10 20:20:04 +0000
+@@ -926,7 +926,7 @@
+ 
+ (defmethod semantic-collector-next-action
+   ((obj semantic-collector-abstract) partial)
+-  "What should we do next?  OBJ can predict a next good action.
++  "What should we do next?  OBJ can be used to determine the next action.
+ PARTIAL indicates if we are doing a partial completion."
+   (if (and (slot-boundp obj 'last-completion)
+ 	   (string= (semantic-completion-text) (oref obj last-completion)))
+@@ -1055,7 +1055,7 @@
+ 
+ (defmethod semantic-collector-try-completion-whitespace
+   ((obj semantic-collector-abstract) prefix)
+-  "For OBJ, do whatepsace completion based on PREFIX.
++  "For OBJ, do whitespace completion based on PREFIX.
+ This implies that if there are two completions, one matching
+ the test \"preifx\\>\", and one not, the one matching the full
+ word version of PREFIX will be chosen, and that text returned.
+@@ -1185,7 +1185,7 @@
+   (semantic-collector-buffer-abstract)
+   ()
+   "Completion engine for tags in the current buffer.
+-When searching for a tag, uses semantic  deep searche functions.
++When searching for a tag, uses semantic deep search functions.
+ Basics search only in the current buffer.")
+ 
+ (defmethod semantic-collector-calculate-cache
+
+=== modified file 'semantic/semantic-idle.el'
+--- semantic/semantic-idle.el	2011-08-07 12:48:54 +0000
++++ semantic/semantic-idle.el	2011-08-10 20:20:04 +0000
+@@ -275,7 +275,7 @@
+         ;; services.  Stop on keypress.
+ 
+ 	;; NOTE ON COMMENTED SAFE HERE
+-	;; We used to not execute the services if the buffer wsa
++	;; We used to not execute the services if the buffer was
+ 	;; unparseable.  We now assume that they are lexically
+ 	;; safe to do, because we have marked the buffer unparseable
+ 	;; if there was a problem.
+@@ -284,11 +284,11 @@
+ 	  (save-excursion
+ 	    (semantic-throw-on-input 'idle-queue)
+ 	    (when semantic-idle-scheduler-verbose-flag
+-	      (working-temp-message "IDLE: execture service %s..." service))
++	      (working-temp-message "IDLE: execute service %s..." service))
+ 	    (semantic-safe (format "Idle Service Error %s: %%S" service)
+ 	      (funcall service))
+ 	    (when semantic-idle-scheduler-verbose-flag
+-	      (working-temp-message "IDLE: execture service %s...done" service))
++	      (working-temp-message "IDLE: execute service %s...done" service))
+ 	    )))
+ 	;;)
+       ;; Finally loop over remaining buffers, trying to update them as
+
