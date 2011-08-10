@@ -16,3 +16,9 @@ special case when we have exactly 'max-tags' matches for completion
 
 -'semantic-displayor-point-position'
 
+# show.completions.immediately.on.tab.diff [bzr r8084 | committed]
+
+-'semantic-displayor-abstract'|'semantic-displayor-next-action', make
+sure we immediately show more completions after user presses TAB the
+first time
+

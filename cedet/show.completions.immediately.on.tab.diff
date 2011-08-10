@@ -1,0 +1,26 @@
+#------------------------------------------------------------
+#revno: 8084
+#author: Pete Beardmore <elbeardmorez@msn.com>
+#committer: David Engster <dengste@eml.cc>
+#branch nick: trunk
+#timestamp: Wed 2011-08-10 22:12:24 +0200
+#message:
+#  (semantic-displayor-abstract::semantic-displayor-next-action): Make
+#  sure we immediately show more completions after user presses TAB the
+#  first time.
+=== modified file 'semantic/semantic-complete.el'
+--- semantic/semantic-complete.el	2011-08-07 13:21:05 +0000
++++ semantic/semantic-complete.el	2011-08-10 20:12:24 +0000
+@@ -1328,8 +1328,9 @@
+ (defmethod semantic-displayor-next-action ((obj semantic-displayor-abstract))
+   "The next action to take on the minibuffer related to display."
+   (if (and (slot-boundp obj 'last-prefix)
+-	   (string= (oref obj last-prefix) (semantic-completion-text))
+-	   (eq last-command this-command))
++	   (or (eq this-command 'semantic-complete-inline-TAB)
++	       (and (string= (oref obj last-prefix) (semantic-completion-text))
++		    (eq last-command this-command))))
+       'scroll
+     'display))
+ 
+
