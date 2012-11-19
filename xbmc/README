@@ -1,0 +1,8 @@
+
+# autotools_.fix.build.hitting.wrong.config.header [git sha:469825b70fff8373f2f67a65b8ab348cc7eb1269 | committed]
+
+-ensure that xbmc's config header path is listed first in the INCLUDES 
+variable which in turn ensures that automake's dependency search algorithm 
+hits it before any other (spurious) config.h files that happen to exist 
+in other include paths
+

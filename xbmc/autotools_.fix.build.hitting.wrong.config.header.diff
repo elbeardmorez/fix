@@ -1,0 +1,42 @@
+From 469825b70fff8373f2f67a65b8ab348cc7eb1269 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Mon, 19 Nov 2012 16:42:24 +0000
+Subject: autotools: fix build hitting wrong config header (ticket
+ #13364)
+
+---
+ Makefile.include.in | 2 +-
+ configure.in        | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.include.in b/Makefile.include.in
+index 5772d67..9a56cf9 100644
+--- a/Makefile.include.in
++++ b/Makefile.include.in
+@@ -32,9 +32,9 @@ CC=@CC@
+ CXXFLAGS+=@CXXFLAGS@
+ CFLAGS+=@CFLAGS@
+ LDFLAGS+=@LDFLAGS@
+-INCLUDES+=$(sort @INCLUDES@)
+ INCLUDES+=-I@abs_top_srcdir@/lib
+ INCLUDES+=-I@abs_top_srcdir@/xbmc
++INCLUDES+=$(sort @INCLUDES@)
+ ifneq (@USE_EXTERNAL_FFMPEG@,1)
+ 	INCLUDES+=-I@abs_top_srcdir@/lib/ffmpeg
+ endif
+diff --git a/configure.in b/configure.in
+index 8d3e857..a3a9a03 100644
+--- a/configure.in
++++ b/configure.in
+@@ -843,7 +843,7 @@ if test "x$have_builtin_sync_val_compare_and_swap" = "xyes"; then
+ fi
+ 
+ # Add top source directory for all builds so we can use config.h
+-INCLUDES="$INCLUDES -I\$(abs_top_srcdir)"
++INCLUDES="-I\$(abs_top_srcdir) $INCLUDES" 
+ 
+ # Check inotify availability
+ AC_CHECK_HEADER([sys/inotify.h], AC_DEFINE([HAVE_INOTIFY],[1],[Define if we have inotify]),)
+-- 
+1.8.2
+

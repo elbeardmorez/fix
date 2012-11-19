@@ -11,6 +11,9 @@ a dumping ground for patches which fix functionality
 ### gst-plugins-base
 -riff_.add.waveformatextension.generic.support.diff [git sha:569f3a29ab1451a70b6cca2277afa072849c5cb2 | committed]
 
+### xbmc
+-autotools_.fix.build.hitting.wrong.config.header [git sha:469825b70fff8373f2f67a65b8ab348cc7eb1269 | committed]
+
 ### subtitleeditor
 -dialog-find-and-replace.ui.enable.gtkentry.focus.diff [svn r857 | committed]
 -find-and-replace.row.deleted.segfault.diff [svn r859 | committed (modified)]
