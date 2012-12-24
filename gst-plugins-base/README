@@ -1,0 +1,10 @@
+
+# riff_.add.waveformatextension.generic.support.diff [git sha:569f3a29ab1451a70b6cca2277afa072849c5cb2 | committed]
+
+-fixes bug: 690591 'No decoder available for type 'audio/x-avi-unknown, 
+codec_id=(int)65534'
+-currently all WAVE_EXTENSIBLE_FORMAT subformat codec ids other than 
+0x1 0x3 0x6 0x7 0x2000 fail to get a decoder, resulting in audio playback 
+failure
+-this commit ensures a sensible default decoder is selected
+
