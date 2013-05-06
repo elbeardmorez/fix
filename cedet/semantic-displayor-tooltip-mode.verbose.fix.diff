@@ -1,0 +1,20 @@
+#------------------------------------------------------------
+#revno: 8559
+#committer: Pete Beardmore <pete.beardmore@msn.com>
+#branch nick: bzr
+#timestamp: Mon 2013-05-06 15:24:38 +0100
+#message:
+#  semantic-displayor-tooltip-mode verbose fix
+=== modified file 'lisp/cedet/semantic/complete.el'
+--- lisp/cedet/semantic/complete.el	2013-02-25 20:37:13 +0000
++++ lisp/cedet/semantic/complete.el	2013-05-06 14:24:38 +0000
+@@ -1670,7 +1670,7 @@
+ 	  (setq msg "...")))
+        ((eq mode 'verbose)
+ 	;; Always show extended match set.
+-	(oset obj max-tags semantic-displayor-tooltip-max-tags)
++	(oset obj max-tags-initial semantic-displayor-tooltip-max-tags)
+ 	(setq max-tags semantic-displayor-tooltip-max-tags)))
+       (unless msg
+ 	(oset obj shown t)
+

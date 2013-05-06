@@ -26,3 +26,8 @@ first time
 
 -'semantic-idle.el'|'semantic-complete.el', typo fixes
 
+# semantic-displayor-tooltip-mode.verbose.fix.diff [bzr r8560 | committed]
+
+-fix error introduced by r8092 'new behavior and options for
+semantic-displayor-tooltip class' overhaul
+
