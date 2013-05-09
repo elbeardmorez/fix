@@ -1,0 +1,94 @@
+#------------------------------------------------------------
+#revno: 8559
+#committer: Pete Beardmore <pete.beardmore@msn.com>
+#branch nick: bzr-mod
+#timestamp: Thu 2013-05-09 10:49:00 +0100
+#message:
+#  semantic-toggle-decoration-style includes fix
+=== modified file 'lisp/cedet/semantic/canned-configs.el'
+--- lisp/cedet/semantic/canned-configs.el	2012-10-16 19:29:23 +0000
++++ lisp/cedet/semantic/canned-configs.el	2013-05-09 09:49:00 +0000
+@@ -140,6 +140,9 @@
+ (defun semantic-load-enable-gaudy-code-helpers-1 ()
+   ;; Enable preparsing many neighboring files.
+   (setq semantic-idle-work-parse-neighboring-files-flag t)
++  (require 'semantic/decorate/mode)
++  (require 'semantic/decorate/include)
++  (semantic-toggle-decoration-style "semantic-decoration-on-includes" t)
+   )
+ 
+ (defun semantic-load-enable-excessive-code-helpers ()
+
+=== modified file 'lisp/cedet/semantic/decorate/include.el'
+--- lisp/cedet/semantic/decorate/include.el	2013-02-25 19:46:38 +0000
++++ lisp/cedet/semantic/decorate/include.el	2013-05-09 09:49:00 +0000
+@@ -27,7 +27,6 @@
+ ;; are otherwise transparent when trying to get smart completion
+ ;; working.
+ 
+-(require 'semantic/decorate/mode)
+ (require 'semantic/db)
+ (require 'semantic/db-ref)
+ (require 'semantic/db-find)
+@@ -323,11 +322,6 @@
+ ;;
+ ;; This mode handles the three states of an include statements
+ ;;
+-(define-semantic-decoration-style semantic-decoration-on-includes
+-  "Highlight class members that are includes.
+-This mode provides a nice context menu on the include statements."
+-  :enabled t)
+-
+ (defun semantic-decoration-on-includes-p-default (tag)
+   "Return non-nil if TAG has is an includes that can't be found."
+   (semantic-tag-of-class-p tag 'include))
+
+=== modified file 'lisp/cedet/semantic/decorate/mode.el'
+--- lisp/cedet/semantic/decorate/mode.el	2013-01-31 20:50:32 +0000
++++ lisp/cedet/semantic/decorate/mode.el	2013-05-09 09:49:00 +0000
+@@ -325,16 +325,18 @@
+            (flag  (if arg
+                       (> (prefix-numeric-value arg) 0)
+                     (not (cdr style)))))
+-      (unless (eq (cdr style) flag)
+-        ;; Store the new flag.
+-        (setcdr style flag)
+-        ;; Refresh decorations is `semantic-decoration-mode' is on.
+-        (when semantic-decoration-mode
+-          (semantic-decoration-mode -1)
+-          (semantic-decoration-mode 1))
+-        (when (cedet-called-interactively-p 'interactive)
+-          (message "Decoration style %s turned %s" (car style)
+-                   (if flag "on" "off"))))
++      (if style 
++        (unless (eq (cdr style) flag)
++          ;; Store the new flag.
++          (setcdr style flag)
++          ;; Refresh decorations if `semantic-decoration-mode' is on.
++          (when semantic-decoration-mode
++            (semantic-decoration-mode -1)
++            (semantic-decoration-mode 1))
++          (when (cedet-called-interactively-p 'interactive)
++            (message "Decoration style %s turned %s" (car style)
++                     (if flag "on" "off"))))
++        (message "unknown decoration style '%s'" name))
+       flag)))
+ 
+ (defvar semantic-decoration-menu-cache nil
+@@ -514,6 +516,15 @@
+   (semantic-set-tag-face
+    tag 'semantic-decoration-on-protected-members-face))
+ 
++;;; External decoration styles
++;;
++;;; Include statement Decorate Mode
++;;
++(define-semantic-decoration-style semantic-decoration-on-includes
++  "Highlight class members that are includes.
++This mode provides a nice context menu on the include statements."
++  :enabled nil)
++
+ (provide 'semantic/decorate/mode)
+ 
+ ;; Local variables:
+

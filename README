@@ -12,6 +12,7 @@ a dumping ground for patches which fix functionality
 -show.completions.immediately.on.tab.diff [bzr r8084 | committed]
 -typo.fixes.diff [bzr r8085 | committed]
 -semantic-displayor-tooltip-mode.verbose.fix.diff [bzr r8560 | committed]
+-semantic-toggle-decoration-style includes fix [bzr r8559 | rejected (alternative fix)]
 
 ### predictive
 -popup.hidden.due.to.line.wrapping.diff [git sha:acaf5d9853c131a00db9732fa93890fa8c1b9d3f | pending]

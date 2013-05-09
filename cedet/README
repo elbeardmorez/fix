@@ -31,3 +31,39 @@ first time
 -fix error introduced by r8092 'new behavior and options for
 semantic-displayor-tooltip class' overhaul
 
+# semantic-toggle-decoration-style includes fix [bzr r8559 | rejected (alternative fix)]
+
+-toggling the includes decoration doesn't work unless
+'semantic/decorate/include.el' is loaded by 'some mode'. note
+'global-semantic-decoration-mode' does not do this  
+
+-the following does not work correctly,
+
+   (require cedet-devel-load)
+   (global-semantic-decoration-mode t)
+   (semantic-toggle-decoration-style "semantic-decoration-on-include" t)
+
+'semantic-decoration-on-includes' does not get added to the style list
+here
+
+-adding '(require semantic/decorate/include)' to
+'semantic/decorate/mode' would fix this, but leads to a recursive
+load issue. so this commit moves the style's definition (the macro
+call to add it to the list) into 'mode.el' instead as::
+--in spite of its file location (under /decorate), includes.el is  
+feature-wise standalone enough not to be required by mode.el (hence  
+don't entertain making it a requisite)
+--to implement a style, 'mode.el' must know about the new style in
+advance
+-as such the redundant require for 'mode.el' in 'include.el' was
+also removed  
+
+-with a now guaranteed complete list of possible styles,  
+the toggle function's name check doesn't have to discern 
+'invalid - not loaded yet' vs 'invalid - no such style'
+
+-'semantic-load-enable-gaudy-code-helpers-1' was also modified  to
+explicitly enable this style, in the same way 
+'semantic-load-enable-excessive-code-helpers-1' does with other
+styles
+
