@@ -67,3 +67,11 @@ explicitly enable this style, in the same way
 'semantic-load-enable-excessive-code-helpers-1' does with other
 styles
 
+# consider.toolbar.width.for.tooltip.placement.diff [bzr r8559 | pending]
+
+-'semantic-displayor-point-position', having the x/gtk toolbar 
+on the left causes completion tooltips to cover the 
+point/completion word. this commit addresses that by
+considering the width of the toolbar in determining the tooltip
+position
+

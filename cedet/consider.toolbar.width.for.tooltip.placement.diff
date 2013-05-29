@@ -1,0 +1,36 @@
+#------------------------------------------------------------
+#revno: 8561
+#committer: Pete Beardmore <pete.beardmore@msn.com>
+#branch nick: bzr-mod
+#timestamp: Wed 2013-05-29 13:25:32 +0100
+#message:
+#  semantic-displayor-point-position: consider toolbar width
+=== modified file 'lisp/cedet/semantic/complete.el'
+--- lisp/cedet/semantic/complete.el	2013-05-13 20:39:48 +0000
++++ lisp/cedet/semantic/complete.el	2013-05-29 12:25:32 +0000
+@@ -1719,16 +1719,17 @@
+   "Return the location of POINT as positioned on the selected frame.
+ Return a cons cell (X . Y)"
+   (let* ((frame (selected-frame))
+-	 (left (or (car-safe (cdr-safe (frame-parameter frame 'left)))
+-		   (frame-parameter frame 'left)))
+-         (top (or (car-safe (cdr-safe (frame-parameter frame 'top)))
+-		  (frame-parameter frame 'top)))
+-	 (point-pix-pos (posn-x-y (posn-at-point)))
+-	 (edges (window-inside-pixel-edges (selected-window))))
++    (left (+ (or (car-safe (cdr-safe (frame-parameter frame 'left)))
++                 (frame-parameter frame 'left))
++             (when (eq (cdr (assoc 'tool-bar-position default-frame-alist))
++                       'left) (tool-bar-pixel-width))))
++    (top (or (car-safe (cdr-safe (frame-parameter frame 'top)))
++             (frame-parameter frame 'top)))
++    (point-pix-pos (posn-x-y (posn-at-point)))
++    (edges (window-inside-pixel-edges (selected-window))))
+     (cons (+ (car point-pix-pos) (car edges) left)
+           (+ (cdr point-pix-pos) (cadr edges) top))))
+ 
+-
+ (defun semantic-displayor-tooltip-show (text)
+   "Display a tooltip with TEXT near cursor."
+   (let ((point-pix-pos (semantic-displayor-point-position))
+

@@ -13,6 +13,7 @@ a dumping ground for patches which fix functionality
 -typo.fixes.diff [bzr r8085 | committed]
 -semantic-displayor-tooltip-mode.verbose.fix.diff [bzr r8560 | committed]
 -semantic-toggle-decoration-style includes fix [bzr r8559 | rejected (alternative fix)]
+-consider.toolbar.width.for.tooltip.placement.diff [bzr r8559 | pending]
 
 ### predictive
 -popup.hidden.due.to.line.wrapping.diff [git sha:acaf5d9853c131a00db9732fa93890fa8c1b9d3f | pending]
