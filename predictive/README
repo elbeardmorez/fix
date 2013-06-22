@@ -1,0 +1,4 @@
+
+# popup.hidden.due.to.line.wrapping.diff [git sha:acaf5d9853c131a00db9732fa93890fa8c1b9d3f | pending]
+-when wrapped lines aren't taken into consideration the count of 'remaining-rows' above the point is too high, and thus the logic incorrectly decides that it can display the popup below the point. hence a hidden popup! this change improves matters but is not perfect
+

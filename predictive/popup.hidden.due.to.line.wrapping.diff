@@ -1,0 +1,25 @@
+From b5d09e7de9e667912743fbf50575e9cb52d36087 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 23 Jun 2013 14:23:03 +0100
+Subject: [PATCH] [fix] popup hidden due to line wrapping
+
+---
+ popup.el | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/popup.el b/popup.el
+index 14e4946..6f04de1 100644
+--- a/popup.el
++++ b/popup.el
+@@ -450,7 +450,7 @@ number at the point."
+   (let* ((remaining-rows (- (max 1 (- (window-height)
+                                       (if mode-line-format 1 0)
+                                       (if header-line-format 1 0)))
+-                            (count-lines (window-start) (point))))
++                            (count-screen-lines (window-start) (point))))
+          (enough-space-above (> row height))
+          (enough-space-below (<= height remaining-rows)))
+     (if (and enough-space-above
+-- 
+1.8.2
+
