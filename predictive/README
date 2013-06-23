@@ -1,4 +1,6 @@
 
 # popup.hidden.due.to.line.wrapping.diff [git sha:acaf5d9853c131a00db9732fa93890fa8c1b9d3f | pending]
 -when wrapped lines aren't taken into consideration the count of 'remaining-rows' above the point is too high, and thus the logic incorrectly decides that it can display the popup below the point. hence a hidden popup! this change improves matters but is not perfect
+# popup.selected.index.double.offset.diff [git sha:acaf5d9853c131a00db9732fa93890fa8c1b9d3f | pending]
+-for the case where popup-direction < 0, from what i can tell, the offset calculated in 'popup-filtered-list' is used the popup-draw function to manipulate the final height of the popup. applying the offset again in 'popup-select' is effectively a double offset, which is an issue. i think it's redundant, hence i removed it. note that the pic above(right) shows no selected item. with a larger set of candidate (eg. 10), the autocomplete text in front of the point is out of sync with the selected item on the popup
 

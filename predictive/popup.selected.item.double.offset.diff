@@ -1,0 +1,24 @@
+From 0d124c7d854365b12dc1f241e76256cf277ae2cd Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 23 Jun 2013 14:24:57 +0100
+Subject: [fix] popup selected item double offset
+
+---
+ popup.el | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/popup.el b/popup.el
+index 14e4946..fb30795 100644
+--- a/popup.el
++++ b/popup.el
+@@ -765,7 +765,6 @@ KEYMAP is a keymap that will be put on the popup contents."
+ 
+ (defun popup-select (popup i)
+   "Select the item at I of POPUP and draw."
+-  (setq i (+ i (popup-offset popup)))
+   (when (and (<= 0 i) (< i (popup-height popup)))
+     (setf (popup-cursor popup) i)
+     (popup-draw popup)
+-- 
+1.8.2
+
