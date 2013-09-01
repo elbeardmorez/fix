@@ -1,0 +1,49 @@
+From 19dc13983497bf6f38e78ff25e92badd09997f7a Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 1 Sep 2013 09:15:33 +0100
+Subject: fix: segfault when accessing uninitialised strings
+
+---
+ src/gamelogic/game/bg_misc.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/gamelogic/game/bg_misc.c b/src/gamelogic/game/bg_misc.c
+index 55dcc9e..f970db0 100644
+--- a/src/gamelogic/game/bg_misc.c
++++ b/src/gamelogic/game/bg_misc.c
+@@ -817,12 +817,12 @@ void BG_UnloadAllConfigs( void )
+         if ( ca )
+         {
+             // Do not free the statically allocated empty string
+-            if( *ca->info != '\0' )
++            if( ca->info != NULL && *ca->info != '\0' )
+             {
+                 BG_Free( (char *)ca->info );
+             }
+ 
+-            if( *ca->fovCvar != '\0' )
++            if( ca->fovCvar != NULL && *ca->fovCvar != '\0' )
+             {
+                 BG_Free( (char *)ca->fovCvar );
+             }
+@@ -842,7 +842,7 @@ void BG_UnloadAllConfigs( void )
+         {
+             BG_Free( (char *)wa->humanName );
+ 
+-            if( *wa->info != '\0' )
++            if( wa->info != NULL && *wa->info != '\0' )
+             {
+                 BG_Free( (char *)wa->info );
+             }
+@@ -857,7 +857,7 @@ void BG_UnloadAllConfigs( void )
+         {
+             BG_Free( (char *)ua->humanName );
+ 
+-            if( *ua->info != '\0' )
++            if( ua->info != NULL && *ua->info != '\0' )
+             {
+                 BG_Free( (char *)ua->info );
+             }
+-- 
+1.8.2
+

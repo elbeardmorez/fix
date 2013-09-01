@@ -9,3 +9,8 @@ dir named 'crashlog.txt/', which looked wrong
 
 -this commit ensure a file is created for logging
 
+# fix_.segfault.when.accessing.uninitialised.strings.diff [git sha:19dc13983497bf6f38e78ff25e92badd09997f7a | rejected (fixed)]
+
+-on trying to create a new profile (running the daemon and hitting
+'create profile' i hit SEGFAULTs due to these uninitialised strings
+

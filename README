@@ -28,6 +28,7 @@ a dumping ground for patches which fix functionality
 
 ### unvanquished
 -fix_.'nix,.create.crash.log.FILE.diff [git sha:4103ad6f6da737a1319cbb907c0d726b549ede6d | committed]
+-fix_.segfault.when.accessing.uninitialised.strings.diff [git sha:19dc13983497bf6f38e78ff25e92badd09997f7a | rejected (fixed)]
 
 ### subtitleeditor
 -dialog-find-and-replace.ui.enable.gtkentry.focus.diff [svn r857 | committed]
