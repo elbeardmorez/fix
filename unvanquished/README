@@ -14,3 +14,18 @@ dir named 'crashlog.txt/', which looked wrong
 -on trying to create a new profile (running the daemon and hitting
 'create profile' i hit SEGFAULTs due to these uninitialised strings
 
+# fix_.don't.access.profile.properties.prematurely.diff [git sha:1c6c7f9d568fd93bafd30355bdf98ec6c3a9312b | committed]
+
+-on trying to create a new profile (running the daemon and hitting
+'create profile' i hit a black screen, and then ended up at the same 
+initial menu
+
+-this was caused by leaving the profile name empty, but there was no
+error message stating that a profile name is required
+
+-internally, 'com_errorMessage' was getting cleared following a
+'com_Error'/server reset, caused by accessing the non-existant profile
+name in the 'createProfile' switch
+
+-this commit ensure the missing error message is displayed correctly
+
