@@ -30,6 +30,7 @@ name in the 'createProfile' switch
 -this commit ensure the missing error message is displayed correctly
 
 # fix_.'nix,.don't.make.assumptions.on.display.name.diff [git sha:fba256d408f3cb7052266d599aa6df8d313454ff | rejected]
+# fix_.'nix,.don't.make.assumptions.on.display.name.diff.v2 [git sha:d074c0e403533edf47f2719c1463daf464ea4523 | committed]
 
 -on trying to bind a keypad-based layout i hit a SEGFAULT due to the
 assumption that my xserver is running on :0
