@@ -30,6 +30,7 @@ a dumping ground for patches which fix functionality
 -fix_.'nix,.create.crash.log.FILE.diff [git sha:4103ad6f6da737a1319cbb907c0d726b549ede6d | committed]
 -fix_.segfault.when.accessing.uninitialised.strings.diff [git sha:19dc13983497bf6f38e78ff25e92badd09997f7a | rejected (fixed)]
 -fix_.don't.access.profile.properties.prematurely.diff [git sha:1c6c7f9d568fd93bafd30355bdf98ec6c3a9312b | committed]
+-fix_.'nix,.don't.make.assumptions.on.display.name.diff [git sha:fba256d408f3cb7052266d599aa6df8d313454ff | rejected]
 
 ### subtitleeditor
 -dialog-find-and-replace.ui.enable.gtkentry.focus.diff [svn r857 | committed]

@@ -1,0 +1,49 @@
+From fba256d408f3cb7052266d599aa6df8d313454ff Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 1 Sep 2013 09:52:54 +0100
+Subject: fix: 'nix, don't make assumptions on display name
+
+---
+ src/engine/sys/sys_unix.c | 26 +++++++++++++++++++++-----
+ 1 file changed, 21 insertions(+), 5 deletions(-)
+
+diff --git a/src/engine/sys/sys_unix.c b/src/engine/sys/sys_unix.c
+index 4fc7356..51f0064 100644
+--- a/src/engine/sys/sys_unix.c
++++ b/src/engine/sys/sys_unix.c
+@@ -1136,11 +1136,27 @@ Sys_IsNumLockDown
+ qboolean Sys_IsNumLockDown( void )
+ {
+ #if !defined(MACOS_X) && !defined(DEDICATED) && !defined(BUILD_TTY_CLIENT)
+-	Display        *dpy = XOpenDisplay(":0");
+-	XKeyboardState x;
+-
+-	XGetKeyboardControl(dpy, &x);
+-	XCloseDisplay(dpy);
++  const char     *denv = getenv( "DISPLAY" );
++  Display        *dpy;
++  XKeyboardState x;
++
++  if ( denv != NULL && strlen( denv ) > 0 )
++    dpy = XOpenDisplay(denv);
++  else
++    dpy = XOpenDisplay(":0");
++
++  if ( dpy == 0 )
++  {
++    Com_Printf( "ERROR: cannot determine numlock state as we couldn't \n   \
++                        grab your non-standard (e.g. not ':0') X display.\n   \
++                        ensure the 'DISPLAY' environment variable is set.\n" );
++    return qtrue;
++  }
++  else
++  {
++    XGetKeyboardControl(dpy, &x);
++    XCloseDisplay(dpy);
++  }
+ 
+ 	return (x.led_mask & 2) ? qtrue : qfalse;
+ #else
+-- 
+1.8.2
+

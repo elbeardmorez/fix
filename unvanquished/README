@@ -29,3 +29,11 @@ name in the 'createProfile' switch
 
 -this commit ensure the missing error message is displayed correctly
 
+# fix_.'nix,.don't.make.assumptions.on.display.name.diff [git sha:fba256d408f3cb7052266d599aa6df8d313454ff | rejected]
+
+-on trying to bind a keypad-based layout i hit a SEGFAULT due to the
+assumption that my xserver is running on :0
+
+-this commit is overkill given the fact that if DISPLAY isn't set, the
+game won't initialise at all, but something was certainly needed
+
