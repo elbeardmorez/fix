@@ -1,0 +1,11 @@
+
+# fix_.'nix,.create.crash.log.FILE.diff [git sha:4103ad6f6da737a1319cbb907c0d726b549ede6d | committed]
+
+-on trying to create a new profile (running the daemon and hitting
+'create profile' i hit SEGFAULTs
+
+-unrelated to these crashes, having looked for logs i found an emtpy
+dir named 'crashlog.txt/', which looked wrong
+
+-this commit ensure a file is created for logging
+
