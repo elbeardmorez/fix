@@ -21,6 +21,9 @@ a dumping ground for patches which fix functionality
 -autoconf,.fall.back.to.default.datadir.install.location.diff [git sha:282548da2bf75858b40a48199d5ba791ae661413 | committed]
 -autoreconf,.don't.force.update.diff [git sha:d78e3bb3c33d23990b2385bc57e1cac99b47a372 | committed]
 
+### realgud
+-autoconf,.fall.back.to.default.datadir.install.location.diff [git sha:700656705435834a5ab521df546b7001b9cd9fd2 | committed]
+
 ### subtitleeditor
 -dialog-find-and-replace.ui.enable.gtkentry.focus.diff [svn r857 | committed]
 -find-and-replace.row.deleted.segfault.diff [svn r859 | committed (modified)]

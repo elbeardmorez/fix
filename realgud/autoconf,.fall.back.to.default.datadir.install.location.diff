@@ -1,0 +1,36 @@
+From 700656705435834a5ab521df546b7001b9cd9fd2 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Mon, 23 Sep 2013 18:30:27 +0100
+Subject: autoconf, fall back to default datadir install location
+
+---
+ configure.ac | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a16f191..db5d121 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -29,8 +29,11 @@ AM_MISSING_PROG(GIT2CL, git2cl, $missing_dir)
+ # Check whether --with-lispdir was given.
+ if test "${with_lispdir+set}" = set; then :
+ else
+-   mydir=$(dirname $0)
+-   with_lispdir=$(EMACS_PROG=$EMACS $SH_PROG $mydir/compute-lispdir.sh)
++  my_lispdir=$(EMACS_PROG=$EMACS $SH_PROG $(dirname $0)/compute-lispdir.sh)
++  if test "${my_lispdir+set}" = set; then :
++    with_lispdir=$my_lispdir
++    echo "'compute-lispdir.sh' lispdir install directory override: '$with_lispdir'"
++  fi
+ fi
+ 
+ ##
+@@ -69,5 +72,3 @@ AC_CONFIG_FILES([Makefile \
+ 		 test/Makefile \
+ 		 ])
+ AC_OUTPUT
+-echo
+-echo "Install lisp directory set to $with_lispdir"
+-- 
+1.8.2
+

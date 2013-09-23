@@ -1,0 +1,13 @@
+
+# autoconf,.fall.back.to.default.datadir.install.location.diff [git sha:700656705435834a5ab521df546b7001b9cd9fd2 | committed]
+
+-don't initialise 'with_lispdir' unless the 'compute-lispdir' script is
+successful
+-hint to the user why the default 'datarootdir' based target changed
+
+-issue hit if local sitepath set in .emacs. the 'compute-lispdir' script 
+draws a blank, and so the install-lisp LISP target installs the files to
+themselves?!
+-ensuring the local sitepath exists in EMACSLOADPATH is an alternative 
+work around
+
