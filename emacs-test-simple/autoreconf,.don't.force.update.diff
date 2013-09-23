@@ -1,0 +1,24 @@
+From d78e3bb3c33d23990b2385bc57e1cac99b47a372 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Mon, 23 Sep 2013 17:54:33 +0100
+Subject: autoreconf, don't force update
+
+---
+ autogen.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/autogen.sh b/autogen.sh
+index 2b57b1a..5f00302 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ cp README.md README
+-autoreconf -vfi && \
++autoreconf -vi && \
+ autoconf && {
+   echo "Running configure with --enable-maintainer-mode $@"
+   ./configure --enable-maintainer-mode $@
+-- 
+1.8.2
+

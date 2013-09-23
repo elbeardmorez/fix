@@ -11,3 +11,13 @@ themselves?!
 -ensuring the local sitepath exists in EMACSLOADPATH is an alternative 
 work around
 
+# autoreconf,.don't.force.update.diff [git sha:d78e3bb3c33d23990b2385bc57e1cac99b47a372 | committed]
+
+-the use of autoreconf's '-f, --force consider all files obsolete' flag 
+seems at odds with use of an old version of 'elisp-comp'. the resulting 
+modifications to the file appear harmless but it causes the repo to have 
+a modified status which gets in the way of further (git pull) updates
+
+-note: for comparison, emacs-dbgr's autogen.sh call to autoreconf doesn't 
+force obsolete status on all files
+
