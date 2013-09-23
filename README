@@ -17,6 +17,9 @@ a dumping ground for patches which fix functionality
 ### bashdb
 -autoconf.prefix.test.fix.diff [git sha:0437fbaaa986abc94f60d4b8343ef976eee23261 | rejected (fixed)]
 
+### emacs-test-simple
+-autoconf,.fall.back.to.default.datadir.install.location.diff [git sha:282548da2bf75858b40a48199d5ba791ae661413 | committed]
+
 ### subtitleeditor
 -dialog-find-and-replace.ui.enable.gtkentry.focus.diff [svn r857 | committed]
 -find-and-replace.row.deleted.segfault.diff [svn r859 | committed (modified)]
