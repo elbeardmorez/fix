@@ -1,0 +1,8 @@
+
+# autoconf.prefix.test.fix.diff [git sha:0437fbaaa986abc94f60d4b8343ef976eee23261 | rejected (fixed)]
+
+-reset the ac_optarg variable to avoid using existing, invalid data in 
+the prefix option value
+-explicitly extract the prefix option's value when specified in the 
+long format
+

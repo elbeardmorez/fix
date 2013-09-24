@@ -1,0 +1,32 @@
+From 8cf00e3be3d593fb650077ab1ea04356c59a5691 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Tue, 24 Sep 2013 10:17:58 +0100
+Subject: autoconf prefix test fix
+
+---
+ configure.ac | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index bd55b5e..9bb6b6b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -34,6 +34,7 @@ AC_CONFIG_MACRO_DIR([m4])
+ # based on where bash thinks bashdb is supposed to be installed.
+ ##################################################################
+ prefix='no'
++ac_optarg=''
+ for ac_option
+ do
+   # If the previous option needs an argument, assign it.
+@@ -47,6 +48,7 @@ do
+   -prefix | --prefix | --prefi | --pref | --pre | --pr | --p)
+     ac_prev=prefix ;;
+   -prefix=* | --prefix=* | --prefi=* | --pref=* | --pre=* | --pr=* | --p=*)
++    ac_optarg=`expr "$ac_option" : '[[^=]]*=\(.*\)'`
+     prefix="$ac_optarg" ;;
+   esac
+ done
+-- 
+1.8.2
+

@@ -14,6 +14,9 @@ a dumping ground for patches which fix functionality
 ### xbmc
 -autotools_.fix.build.hitting.wrong.config.header [git sha:469825b70fff8373f2f67a65b8ab348cc7eb1269 | committed]
 
+### bashdb
+-autoconf.prefix.test.fix.diff [git sha:0437fbaaa986abc94f60d4b8343ef976eee23261 | rejected (fixed)]
+
 ### subtitleeditor
 -dialog-find-and-replace.ui.enable.gtkentry.focus.diff [svn r857 | committed]
 -find-and-replace.row.deleted.segfault.diff [svn r859 | committed (modified)]
