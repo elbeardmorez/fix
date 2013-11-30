@@ -33,6 +33,9 @@ a dumping ground for patches which fix functionality
 -fix_.'nix,.don't.make.assumptions.on.display.name.diff [git sha:fba256d408f3cb7052266d599aa6df8d313454ff | rejected]
 -fix_.'nix,.don't.make.assumptions.on.display.name.diff.v2 [git sha:d074c0e403533edf47f2719c1463daf464ea4523 | committed]
 
+### freealut
+-respect.LIB_SUFFIX.in.installation.paths.diff [git sha:0d9efcb3e17991efa8219aa3cc3c8d22961490e7 | committed]
+
 ### subtitleeditor
 -dialog-find-and-replace.ui.enable.gtkentry.focus.diff [svn r857 | committed]
 -find-and-replace.row.deleted.segfault.diff [svn r859 | committed (modified)]
