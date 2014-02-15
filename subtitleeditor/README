@@ -1,0 +1,4 @@
+
+# dialog-find-and-replace.ui.enable.gtkentry.focus.diff [svn r855 | pending]
+-trivial, re-enable focus of find-and-replace GtkEntry widgets
+

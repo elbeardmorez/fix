@@ -1,0 +1,22 @@
+Index: plugins/actions/findandreplace/dialog-find-and-replace.ui
+===================================================================
+--- plugins/actions/findandreplace/dialog-find-and-replace.ui	(revision 855)
++++ plugins/actions/findandreplace/dialog-find-and-replace.ui	(working copy)
+@@ -277,7 +277,7 @@
+                             <property name="id_column">1</property>
+                             <child internal-child="entry">
+                               <object class="GtkEntry" id="comboboxtext-entry">
+-                                <property name="can_focus">False</property>
++                                <property name="can_focus">True</property>
+                               </object>
+                             </child>
+                           </object>
+@@ -295,7 +295,7 @@
+                             <property name="id_column">1</property>
+                             <child internal-child="entry">
+                               <object class="GtkEntry" id="comboboxtext-entry1">
+-                                <property name="can_focus">False</property>
++                                <property name="can_focus">True</property>
+                               </object>
+                             </child>
+                           </object>
