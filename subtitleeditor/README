@@ -2,3 +2,17 @@
 # dialog-find-and-replace.ui.enable.gtkentry.focus.diff [svn r855 | pending]
 -trivial, re-enable focus of find-and-replace GtkEntry widgets
 
+# find-and-replace.row.deleted.segfault.diff [svn r855 | pending]
+-fix segfault when find-and-replace's current subtitle is deleted
+-it appears the model needed to tell the find-and-replace dialog that it had deleted the subtitle. the find-and-replace dialog's current/m_subtitle instance needed updating
+-steps to reproduce
+--open subtitle
+--open find-and-replace dialog
+--enter valid search
+--click find
+--switch to main gui
+--delete successful subtitle match
+--switch back to find-and-replace dialog
+--click find
+--segfault!
+

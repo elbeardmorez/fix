@@ -1,0 +1,97 @@
+Index: plugins/actions/findandreplace/findandreplace.cc
+===================================================================
+--- plugins/actions/findandreplace/findandreplace.cc	(revision 855)
++++ plugins/actions/findandreplace/findandreplace.cc	(working copy)
+@@ -579,6 +579,17 @@
+ 		m_checkIgnoreCase->set_sensitive(has_doc);
+ 		m_checkUsedRegularExpression->set_sensitive(has_doc);
+ 
++		// Connect model row deleted signal
++		if (m_document)
++		{
++			for(unsigned int i = 0; i < m_connections.size(); ++i)
++				m_connections[i].disconnect();
++			m_connections.clear();
++
++			m_connections.push_back(m_document->get_subtitle_model()->signal_row_deleted().connect(
++				sigc::mem_fun(*this, &DialogFindAndReplace::on_subtitle_deleted)));
++		}
++
+ 		// Reset values
+ 		m_subtitle = Subtitle();
+ 		m_info.reset();
+@@ -651,6 +670,19 @@
+ 			m_textview->get_buffer()->set_text("");
+ 	}
+ 
++	void on_subtitle_deleted(const Gtk::TreeModel::Path& path)
++	{
++		// cannot test against path as m_subtitle is already dead?
++		Subtitles subtitles = m_document->subtitles();
++		if(subtitles.size() > 0)
++		{
++			m_subtitle = subtitles.get_first_selected();
++			if(!m_subtitle)
++				m_subtitle = subtitles.get_first();
++			update_search_ui();
++		}
++	}
++
+ 	/*
+ 	 * Response handler for signals:
+ 	 * FIND, REPLACE, REPLACE_ALL and (RESPONSE_CLOSE & RESPONSE_DELETE_EVENT)
+@@ -702,6 +734,13 @@
+ 			m_comboboxPattern->save_history();
+ 			m_comboboxReplacement->save_history();
+ 
++			if (m_document)
++			{
++				for(unsigned int i = 0; i < m_connections.size(); ++i)
++					m_connections[i].disconnect();
++				m_connections.clear();
++			}
++
+ 			delete m_instance;
+ 			m_instance = NULL;
+ 		}
+@@ -839,6 +878,7 @@
+ 	Document* m_document;
+ 	Subtitle	m_subtitle;
+ 	MatchInfo	m_info;
++	std::vector<sigc::connection> m_connections;
+ 
+ 	Gtk::Label* m_labelCurrentColumn;
+ 	Gtk::TextView* m_textview;
+Index: src/document.h
+===================================================================
+--- src/document.h	(revision 855)
++++ src/document.h	(working copy)
+@@ -308,6 +310,7 @@
+ 	friend class Subtitle;
+ 	friend class Subtitles;
+ 	friend class SubtitleView;
++	friend class DialogFindAndReplace;
+ 
+ 	/*
+ 	 * Return the subtitle model.
+Index: src/subtitles.cc
+===================================================================
+--- src/subtitles.cc	(revision 855)
++++ src/subtitles.cc	(working copy)
+@@ -348,13 +348,16 @@
+ 	if(m_document.is_recording())
+ 		m_document.add_command(new RemoveSubtitlesCommand(&m_document, subs));
+ 
++	Gtk::TreePath path;
+ 	std::vector<Subtitle>::reverse_iterator it;
+ 	for(it = subs.rbegin(); it != subs.rend(); ++it)
+ 	{
+ 		Subtitle prev_sub = get_previous( *it );
+ 		Subtitle next_sub = get_next( *it );
+ 
++		path = Gtk::TreePath(((Subtitle)*it).get("path"));
+ 		m_document.get_subtitle_model()->erase((*it).m_iter);
++		m_document.get_subtitle_model()->row_deleted(path);
+ 
+ 		if( prev_sub )
+ 			prev_sub.update_gap_after();
