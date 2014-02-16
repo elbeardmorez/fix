@@ -11,4 +11,5 @@ a dumping ground for patches which fix functionality
 ### subtitleeditor
 -dialog-find-and-replace.ui.enable.gtkentry.focus.diff [svn r855 | pending]
 -find-and-replace.row.deleted.segfault.diff [svn r855 | pending]
+-typos.diff [svn r855 | pending]
 

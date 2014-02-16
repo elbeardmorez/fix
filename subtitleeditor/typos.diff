@@ -1,0 +1,45 @@
+Index: plugins/actions/findandreplace/findandreplace.cc
+===================================================================
+--- plugins/actions/findandreplace/findandreplace.cc	(revision 855)
++++ plugins/actions/findandreplace/findandreplace.cc	(working copy)
+@@ -138,7 +140,7 @@
+ 	}
+ 
+ 	/*
+-	 * Return the current remplacement text.
++	 * Return the current replacement text.
+ 	 */
+ 	Glib::ustring get_replacement()
+ 	{
+@@ -184,7 +186,7 @@
+ 	}
+ 
+ 	/*
+-	 * Replace the current search (MatchInfo) by the remplacement text.
++	 * Replace the current search (MatchInfo) by the replacement text.
+ 	 */
+ 	bool replace(Document &doc, Subtitle &sub, MatchInfo &info)
+ 	{
+
+Index: src/document.h
+===================================================================
+--- src/document.h	(revision 855)
++++ src/document.h	(working copy)
+@@ -271,7 +271,7 @@
+ 	FRAMERATE get_framerate();
+ 
+ 	/*
+-	 * Return a signal connector from his name.
++	 * Return a signal connector from its name.
+ 	 *
+ 	 * The list of signals available:
+ 	 *
+@@ -293,7 +295,7 @@
+ 	sigc::signal<void>& get_signal(const std::string &name);
+ 
+ 	/*
+- 	 * Emit a signal from his name.
++ 	 * Emit a signal from its name.
+ 	 */
+ 	void emit_signal(const std::string &name);
+ 
