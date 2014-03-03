@@ -9,7 +9,7 @@ a dumping ground for patches which fix functionality
 -popup.selected.index.double.offset.diff [git sha:acaf5d9853c131a00db9732fa93890fa8c1b9d3f | pending]
 
 ### subtitleeditor
--dialog-find-and-replace.ui.enable.gtkentry.focus.diff [svn r855 | pending]
--find-and-replace.row.deleted.segfault.diff [svn r855 | pending]
--typos.diff [svn r855 | pending]
+-dialog-find-and-replace.ui.enable.gtkentry.focus.diff [svn r857 | committed]
+-find-and-replace.row.deleted.segfault.diff [svn r859 | committed (modified)]
+-typos.diff [svn r856 | committed]
 
