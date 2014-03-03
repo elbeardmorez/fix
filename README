@@ -13,3 +13,6 @@ a dumping ground for patches which fix functionality
 -find-and-replace.row.deleted.segfault.diff [svn r859 | committed (modified)]
 -typos.diff [svn r856 | committed]
 
+### mpd
+-PulseOutputPlugin_.dont.lock.in.event.loop.thread.diff [git sha:503ed9c331426d625ddcfef25356d222c13af8a | pending]
+

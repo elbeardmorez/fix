@@ -1,0 +1,34 @@
+From 88748838caec14b42056dfcd445a270ded23b412 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Mon, 3 Mar 2014 19:53:27 +0000
+Subject: PulseOutputPlugin: don't lock in event loop thread
+
+---
+ src/output/plugins/PulseOutputPlugin.cxx | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/output/plugins/PulseOutputPlugin.cxx b/src/output/plugins/PulseOutputPlugin.cxx
+index 31635bc..2615a2c 100644
+--- a/src/output/plugins/PulseOutputPlugin.cxx
++++ b/src/output/plugins/PulseOutputPlugin.cxx
+@@ -71,13 +71,15 @@ SetError(Error &error, pa_context *context, const char *msg)
+ void
+ pulse_output_lock(PulseOutput &po)
+ {
+-	pa_threaded_mainloop_lock(po.mainloop);
++	if (!pa_threaded_mainloop_in_thread(po.mainloop))
++		pa_threaded_mainloop_lock(po.mainloop);
+ }
+ 
+ void
+ pulse_output_unlock(PulseOutput &po)
+ {
+-	pa_threaded_mainloop_unlock(po.mainloop);
++	if (!pa_threaded_mainloop_in_thread(po.mainloop))
++		pa_threaded_mainloop_unlock(po.mainloop);
+ }
+ 
+ void
+-- 
+1.8.4
+
