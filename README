@@ -15,4 +15,5 @@ a dumping ground for patches which fix functionality
 
 ### mpd
 -PulseOutputPlugin_.dont.lock.in.event.loop.thread.diff [git sha:503ed9c331426d625ddcfef25356d222c13af8a | pending]
+-PulseOutputPlugin_.dont.lock.null.thread.diff [git sha:503ed9c331426d625ddcfef25356d222c13af8a | pending]
 

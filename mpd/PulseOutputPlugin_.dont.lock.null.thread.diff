@@ -1,0 +1,35 @@
+From 04791d00c5804b948a1f95344d8bd52ce672baaf Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Tue, 4 Mar 2014 08:52:10 +0000
+Subject: PulseOutputPlugin: don't lock null thread
+
+---
+ src/output/plugins/PulseOutputPlugin.cxx | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/output/plugins/PulseOutputPlugin.cxx b/src/output/plugins/PulseOutputPlugin.cxx
+index 2615a2c..09394ec 100644
+--- a/src/output/plugins/PulseOutputPlugin.cxx
++++ b/src/output/plugins/PulseOutputPlugin.cxx
+@@ -373,10 +373,7 @@ pulse_output_enable(AudioOutput *ao, Error &error)
+ 		return false;
+ 	}
+ 
+-	pa_threaded_mainloop_lock(po->mainloop);
+-
+ 	if (pa_threaded_mainloop_start(po->mainloop) < 0) {
+-		pa_threaded_mainloop_unlock(po->mainloop);
+ 		pa_threaded_mainloop_free(po->mainloop);
+ 		po->mainloop = nullptr;
+ 
+@@ -387,6 +384,7 @@ pulse_output_enable(AudioOutput *ao, Error &error)
+ 
+ 	/* create the libpulse context and connect it */
+ 
++	pa_threaded_mainloop_lock(po->mainloop);
+ 	if (!pulse_output_setup_context(po, error)) {
+ 		pa_threaded_mainloop_unlock(po->mainloop);
+ 		pa_threaded_mainloop_stop(po->mainloop);
+-- 
+1.8.4
+

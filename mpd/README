@@ -20,3 +20,9 @@ index b838de6..0a765bf 100644
 http://freedesktop.org/software/pulseaudio/doxygen/thread-mainloop_8h.html#a2fd002f510ed24cabacb63a26bf4c977
 
 -due to the now mixed use case for GetVolume this patch adds pa_threaded_mainloop_in_thread tests. preferably these additions would have been in PulseMixer::GetVolume but the PulseOutput struct (containing the mainloop reference) is not available from there
+
+# PulseOutputPlugin_.dont.lock.null.thread.diff [git sha:503ed9c331426d625ddcfef25356d222c13af8a | pending]
+-fix potential SIGABRTs due to non-spec use of the mainloop
+-mpd attempts to obtain a lock on the mainloop thread before it is started
+-considering pa_mainloop_lock's 'pa_assert(!m->thread || !pa_thread_is_running(m->thread) || !in_worker(m))' code, with m->thread == NULL, the resulting false-positive and short-circuit operator || prevents a SIGABRT slightly further down the codepath. i imagine this false-positive 'saviour' being removed some day with the expectation that implementations start the thread before requiring a lock
+
