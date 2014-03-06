@@ -1,28 +1,11 @@
 
-# PulseOutputPlugin_.dont.lock.in.event.loop.thread.diff [git sha:503ed9c331426d625ddcfef25356d222c13af8a | pending]
--fix SIGABRTs due to the pa_assert / is_worker combo in pa_mainloop_lock
--regression introduced by: '8d6fedf8177d0d2ced81e6d93d35c368b2ac69db [PATCH] Mixer: add class MixerListener' ..specifically the addition
-
-diff --git a/src/mixer/plugins/PulseMixerPlugin.cxx b/src/mixer/plugins/PulseMixerPlugin.cxx
-index b838de6..0a765bf 100644
---- a/src/mixer/plugins/PulseMixerPlugin.cxx
-+++ b/src/mixer/plugins/PulseMixerPlugin.cxx
-92,7 +92,7 @@ PulseMixer::VolumeCallback(const pa_sink_input_info *i, int eol)
-  online = true;
-  volume = i->volume;
-
- - GlobalEvents::Emit(GlobalEvents::MIXER);
- + listener.OnMixerVolumeChanged(*this, GetVolume(IgnoreError()));
-  }
-
--this results in new calls to pa_mainloop_lock via pulse_output_lock from within the events loop which is explicitly disallowed as as per the link below the lock is already obtained:
-
-http://freedesktop.org/software/pulseaudio/doxygen/thread-mainloop_8h.html#a2fd002f510ed24cabacb63a26bf4c977
-
--due to the now mixed use case for GetVolume this patch adds pa_threaded_mainloop_in_thread tests. preferably these additions would have been in PulseMixer::GetVolume but the PulseOutput struct (containing the mainloop reference) is not available from there
-
-# PulseOutputPlugin_.dont.lock.null.thread.diff [git sha:503ed9c331426d625ddcfef25356d222c13af8a | pending]
+# PulseOutputPlugin_.dont.lock.null.thread.diff [git sha:503ed9c331426d625ddcfef25356d222c13af8a | rejected]
 -fix potential SIGABRTs due to non-spec use of the mainloop
 -mpd attempts to obtain a lock on the mainloop thread before it is started
 -considering pa_mainloop_lock's 'pa_assert(!m->thread || !pa_thread_is_running(m->thread) || !in_worker(m))' code, with m->thread == NULL, the resulting false-positive and short-circuit operator || prevents a SIGABRT slightly further down the codepath. i imagine this false-positive 'saviour' being removed some day with the expectation that implementations start the thread before requiring a lock
+
+# PulseOutputPlugin_.avoid.locking.mainloop.object.from.within.mainloop.thread.diff [git sha:9da57e7458ed2e539ba1693ca748c0e5c7969585 | committed]
+-fixes regression introduced by: '8d6fedf8177d0d2ced81e6d93d35c368b2ac69db [PATCH] Mixer: add class MixerListener' -listener.OnMixerVolumeChanged() called GetVolume() which attempted to acquire the lock but as per 'pa_threaded_mainloop_lock()' documentation:
+This function may not be called inside the event loop thread. Events that are dispatched from the event loop thread are executed with this lock held
+-this patch seperates the underlying action of GetVolume() into a new GetVolumeInternal() function, to be called only when the lock is already held, as is the case for the listener.OnMixerVolumeChanged() call 
 

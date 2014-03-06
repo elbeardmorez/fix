@@ -1,0 +1,70 @@
+From 9da57e7458ed2e539ba1693ca748c0e5c7969585 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Wed, 5 Mar 2014 08:08:12 +0000
+Subject: [PATCH 1/3] PulseOutputPlugin: avoid locking mainloop object from
+ within mainloop thread -fixes regression introduced by: 
+ '8d6fedf8177d0d2ced81e6d93d35c368b2ac69db [PATCH] Mixer: add class
+ MixerListener' -listener.OnMixerVolumeChanged() called GetVolume() which
+ attempted to acquire the lock but as per 'pa_threaded_mainloop_lock()'
+ documentation: This function may not be called inside the event loop thread.
+ Events that are dispatched from the event loop thread are executed with this
+ lock held -this patch seperates the underlying action of GetVolume() into a
+ new GetVolumeInternal() function, to be called only when the lock is already
+ held, as is the case for the listener.OnMixerVolumeChanged() call
+
+---
+ src/mixer/plugins/PulseMixerPlugin.cxx | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/src/mixer/plugins/PulseMixerPlugin.cxx b/src/mixer/plugins/PulseMixerPlugin.cxx
+index 0a765bf..c5f2072 100644
+--- a/src/mixer/plugins/PulseMixerPlugin.cxx
++++ b/src/mixer/plugins/PulseMixerPlugin.cxx
+@@ -52,6 +52,7 @@ public:
+ 	void Offline();
+ 	void VolumeCallback(const pa_sink_input_info *i, int eol);
+ 	void Update(pa_context *context, pa_stream *stream);
++	int GetVolumeInternal(Error &error);
+ 
+ 	/* virtual methods from class Mixer */
+ 	virtual bool Open(gcc_unused Error &error) override {
+@@ -92,7 +93,7 @@ PulseMixer::VolumeCallback(const pa_sink_input_info *i, int eol)
+ 	online = true;
+ 	volume = i->volume;
+ 
+-	listener.OnMixerVolumeChanged(*this, GetVolume(IgnoreError()));
++	listener.OnMixerVolumeChanged(*this, GetVolumeInternal(IgnoreError()));
+ }
+ 
+ /**
+@@ -187,15 +188,23 @@ PulseMixer::GetVolume(gcc_unused Error &error)
+ {
+ 	pulse_output_lock(output);
+ 
+-	int result = online
+-		? (int)((100 * (pa_cvolume_avg(&volume) + 1)) / PA_VOLUME_NORM)
+-		: -1;
+-
++	int result = GetVolumeInternal(error);
+ 	pulse_output_unlock(output);
+ 
+ 	return result;
+ }
+ 
++/**
++ * Pulse mainloop lock must be held by caller
++ */
++int
++PulseMixer::GetVolumeInternal(gcc_unused Error &error)
++{
++	return online ?
++		(int)((100 * (pa_cvolume_avg(&volume) + 1)) / PA_VOLUME_NORM)
++		: -1;
++}
++
+ bool
+ PulseMixer::SetVolume(unsigned new_volume, Error &error)
+ {
+-- 
+1.8.2
+

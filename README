@@ -14,6 +14,6 @@ a dumping ground for patches which fix functionality
 -typos.diff [svn r856 | committed]
 
 ### mpd
--PulseOutputPlugin_.dont.lock.in.event.loop.thread.diff [git sha:503ed9c331426d625ddcfef25356d222c13af8a | pending]
--PulseOutputPlugin_.dont.lock.null.thread.diff [git sha:503ed9c331426d625ddcfef25356d222c13af8a | pending]
+-PulseOutputPlugin_.dont.lock.null.thread.diff [git sha:503ed9c331426d625ddcfef25356d222c13af8a | rejected]
+-PulseOutputPlugin_.avoid.locking.mainloop.object.from.within.mainloop.thread.diff [git sha:9da57e7458ed2e539ba1693ca748c0e5c7969585 | committed]
 
