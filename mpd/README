@@ -9,3 +9,12 @@
 This function may not be called inside the event loop thread. Events that are dispatched from the event loop thread are executed with this lock held
 -this patch seperates the underlying action of GetVolume() into a new GetVolumeInternal() function, to be called only when the lock is already held, as is the case for the listener.OnMixerVolumeChanged() call 
 
+# MultipleOutputs_.ensure.input_audio_format.is.zero-initialised.diff [git sha:f2f1801c25e3d8d936fcd828a14f5af6d3d862c9 | pending]
+-fixes SIGABRT when mpd is started from a previously paused state
+-regression introduced by commit: f5a923b9d16e4c63942a033d1bdb2ab150aae342:
+'OutputAll: convert to class, move instance to class Partition'
+
+-input_audio_format was previously declared using the static modifier ensuring it was zero-initialised by default
+-the current default-initialised input_audio_format contains garbage at runtime which allows the AudioFormat.IsDefined() 'fail fast' test in MultipleOutputs::Update to pass and the SIGABRT follows in AudioOutput::Open when passed the invalid input_audio_format struct
+-switching AudioFormat.IsDefined() for AudioFormat.IsValid() is an alternative workaround
+

@@ -1,0 +1,36 @@
+From 5b6e1115f53b462d6a3ed3d2b7111414c27aff02 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 9 Mar 2014 18:40:56 +0000
+Subject: MultipleOutputs: ensure input_audio_format is zero-initialised
+
+-fixes SIGABRT when mpd is started from a previously paused state
+-regression introduced by commit: f5a923b9d16e4c63942a033d1bdb2ab150aae342:
+'OutputAll: convert to class, move instance to class Partition'
+
+-input_audio_format was previously declared using the static modifier
+ensuring it was zero-initialised by default
+-the current default-initialised input_audio_format contains garbage at
+runtime which allows the AudioFormat.IsDefined() 'fail fast' test in
+MultipleOutputs::Update to pass and the SIGABRT follows in
+AudioOutput::Open when passed the invalid input_audio_format struct
+-switching AudioFormat.IsDefined() for AudioFormat.IsValid() is an
+alternative workaround
+---
+ src/output/MultipleOutputs.cxx | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/output/MultipleOutputs.cxx b/src/output/MultipleOutputs.cxx
+index 2791e70..70f34af 100644
+--- a/src/output/MultipleOutputs.cxx
++++ b/src/output/MultipleOutputs.cxx
+@@ -37,6 +37,7 @@
+ 
+ MultipleOutputs::MultipleOutputs(MixerListener &_mixer_listener)
+ 	:mixer_listener(_mixer_listener),
++	 input_audio_format(),
+ 	 buffer(nullptr), pipe(nullptr),
+ 	 elapsed_time(-1)
+ {
+-- 
+1.8.4
+
