@@ -23,6 +23,7 @@ a dumping ground for patches which fix functionality
 
 ### realgud
 -autoconf,.fall.back.to.default.datadir.install.location.diff [git sha:700656705435834a5ab521df546b7001b9cd9fd2 | committed]
+-shortkey_.clean.up.realgud-short-key-mode-setup.white.space.only.diff [git sha:12c3d03e68215d57fbd7e572e12b62370752d2e5 | pending]
 
 ### subtitleeditor
 -dialog-find-and-replace.ui.enable.gtkentry.focus.diff [svn r857 | committed]

@@ -1,0 +1,80 @@
+From 12c3d03e68215d57fbd7e572e12b62370752d2e5 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Tue, 11 Mar 2014 15:19:39 +0000
+Subject: shortkey, clean up 'realgud-short-key-mode-setup' (whitespace only)
+
+-give nesting a chance by removing mix of tabs and spaces
+---
+ realgud/common/shortkey.el | 55 +++++++++++++++++++++++-----------------------
+ 1 file changed, 27 insertions(+), 28 deletions(-)
+
+diff --git a/realgud/common/shortkey.el b/realgud/common/shortkey.el
+index 89a362f..bd38410 100644
+--- a/realgud/common/shortkey.el
++++ b/realgud/common/shortkey.el
+@@ -54,35 +54,34 @@ The buffer is read-only when the minor mode is active.
+   "Called when entering or leaving `realgud-short-key-mode'. Variable
+ MODE-ON? a boolean which specifies if we are going into or out of this mode."
+   (if (realgud-srcbuf?)
+-      (let ((cmdbuf (realgud-get-cmdbuf)))
+-	;; Ensure action only is performed when the state actually is toggled.
+-	;; or when not read-only
+-	(if (or (not buffer-read-only)
+-		(not (eq (realgud-sget 'srcbuf-info 'short-key?) mode-on?)))
+-	    (progn
+-	      ;; Save the current state, so we can determine when the
+-	      ;; state is toggled in the future.
+-	      (if (not (eq (realgud-sget 'srcbuf-info 'short-key?) mode-on?))
+-		  (progn
+-		    (realgud-srcbuf-info-short-key?= mode-on?)
+-		    (setq realgud-short-key-mode mode-on?)
+-		    (if mode-on?
+-			;; Mode is being turned on.
+-			(progn
+-			  (realgud-srcbuf-info-was-read-only?= buffer-read-only)
+-			  (local-set-key [M-insert] 'realgud-short-key-mode)
+-			  (setq buffer-read-only t))
+-		      ;; Mode is being turned off: restore read-only state.
+-		      (setq buffer-read-only
+-			    (realgud-sget 'srcbuf-info 'was-read-only?)))))
+-	      )
+-	  ;; (with-current-buffer-safe cmdbuf
+-	  ;;   (realgud-cmdbuf-info-src-shortkey?= mode-on?)
+-	  ;;   (realgud-cmdbuf-info-in-srcbuf?= mode-on?)
+-	  ;;   )
+-	  ))
++    (let ((cmdbuf (realgud-get-cmdbuf)))
++      ;; Ensure action only is performed when the state actually is toggled.
++      ;; or when not read-only
++      (if (or (not buffer-read-only)
++              (not (eq (realgud-sget 'srcbuf-info 'short-key?) mode-on?)))
++        (progn
++          ;; Save the current state, so we can determine when the
++          ;; state is toggled in the future.
++          (if (not (eq (realgud-sget 'srcbuf-info 'short-key?) mode-on?))
++            (progn
++              (realgud-srcbuf-info-short-key?= mode-on?)
++              (setq realgud-short-key-mode mode-on?)
++              (if mode-on?
++                ;; Mode is being turned on.
++                (progn
++                  (realgud-srcbuf-info-was-read-only?= buffer-read-only)
++                  (local-set-key [M-insert] 'realgud-short-key-mode)
++                  (setq buffer-read-only t))
++                ;; Mode is being turned off: restore read-only state.
++                (setq buffer-read-only
++                  (realgud-sget 'srcbuf-info 'was-read-only?))))))
++    ;; (with-current-buffer-safe cmdbuf
++    ;;   (realgud-cmdbuf-info-src-shortkey?= mode-on?)
++    ;;   (realgud-cmdbuf-info-in-srcbuf?= mode-on?)
++    ;;   )
++    ))
+     (error "Buffer %s does not seem to be attached to a debugger"
+-	   (buffer-name))))
++      (buffer-name))))
+ 
+ (defun realgud-short-key-mode-off ()
+   "Turn off `realgud-short-key-mode' in all buffers."
+-- 
+1.8.2
+
