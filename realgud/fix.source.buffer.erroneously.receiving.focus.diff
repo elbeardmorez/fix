@@ -1,0 +1,46 @@
+From 4af117924bc8759b1948ae6e6e5b97ad7e0ede55 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Wed, 12 Mar 2014 18:13:36 +0000
+Subject: fix source buffer erroneously receiving focus
+
+-after running commands from the source buffer (e.g. via Short-Key
+mode) the source buffer always receives point focus following a
+command, regardless of where that command came from. this makes
+executing concurrent commands from the command buffer very tedious
+
+-it appears 'realgud-cmd-remap' is only called when executing
+commands from the source buffer, but this function is the only place
+where 'in-srcbuf' (which ultimately determines which buffer obtains
+focus) is set:
+
+(realgud-cmdbuf-info-in-srcbuf?= (not (realgud-cmdbuf? buffer)))
+
+hence 'in-srcbuf' is only ever set 't' from its initial 'nil' value,
+resulting in the behaviour described
+
+-this commit simply resets the 'in-srcbuf' variable at an appropriate
+point in the command execution stack
+---
+ realgud/common/track.el | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/realgud/common/track.el b/realgud/common/track.el
+index 56a7281..4f47eba 100644
+--- a/realgud/common/track.el
++++ b/realgud/common/track.el
+@@ -309,6 +309,12 @@ encountering a new loc."
+ 	  (with-current-buffer srcbuf
+ 	    (realgud-window-src srcbuf)
+ 	    (realgud-window-update-position srcbuf realgud-overlay-arrow1))
++	  ;; reset 'in-srcbuf' to allow the command buffer to keep point focus
++	  ;; when used directly. 'in-srcbuf' is set 't' early in the stack
++	  ;; (prior to common command code, e.g. this) when any command is run
++	  ;; from a source buffer
++	  (with-current-buffer cmdbuf
++	    (realgud-cmdbuf-info-in-srcbuf?= nil))
+ 	  )
+ 	))
+   )
+-- 
+1.8.2
+

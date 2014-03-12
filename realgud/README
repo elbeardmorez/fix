@@ -15,3 +15,23 @@ work around
 
 -give nesting a chance by removing mix of tabs and spaces
 
+# fix.source.buffer.erroneously.receiving.focus.diff [git sha:4af117924bc8759b1948ae6e6e5b97ad7e0ede55 | pending]
+
+-after running commands from the source buffer (e.g. via Short-Key
+mode) the source buffer always receives point focus following a
+command, regardless of where that command came from. this makes
+executing concurrent commands from the command buffer very tedious
+
+-it appears 'realgud-cmd-remap' is only called when executing
+commands from the source buffer, but this function is the only place
+where 'in-srcbuf' (which ultimately determines which buffer obtains
+focus) is set:
+
+(realgud-cmdbuf-info-in-srcbuf?= (not (realgud-cmdbuf? buffer)))
+
+hence 'in-srcbuf' is only ever set 't' from its initial 'nil' value,
+resulting in the behaviour described
+
+-this commit simply resets the 'in-srcbuf' variable at an appropriate
+point in the command execution stack
+
