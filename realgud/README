@@ -15,7 +15,7 @@ work around
 
 -give nesting a chance by removing mix of tabs and spaces
 
-# fix.source.buffer.erroneously.receiving.focus.diff [git sha:4af117924bc8759b1948ae6e6e5b97ad7e0ede55 | pending]
+# fix.source.buffer.erroneously.receiving.focus.diff [git sha:4af117924bc8759b1948ae6e6e5b97ad7e0ede55 | committed]
 
 -after running commands from the source buffer (e.g. via Short-Key
 mode) the source buffer always receives point focus following a
