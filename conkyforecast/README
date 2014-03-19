@@ -1,0 +1,9 @@
+
+# fix_.add.missing.variable.in.location.assignment.diff [bzr r70 | unsubmitted]
+ 
+-service provider changed its data format, resulting in:
+  
+ ERROR: Error reading weather data: too many values to unpack
+  
+the 'loc->dnam' node now requires an addition 'code' variable
+

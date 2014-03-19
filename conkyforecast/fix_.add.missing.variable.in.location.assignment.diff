@@ -1,0 +1,26 @@
+#------------------------------------------------------------
+#revno: 72
+#committer: Pete Beardmore <pete.beardmore@msn.com>
+#branch nick: bzr-mod
+#timestamp: Wed 2014-03-19 18:27:39 +0000
+#message:
+#  * Bug fix: add missing variable in location assignment
+#  
+#  service provider changed its data format, resulting in:
+#  
+#    ERROR: Error reading weather data: too many values to unpack
+#  
+#  the 'loc->dnam' node now requires an addition 'code' variable
+=== modified file 'conkyForecast.py'
+--- conkyForecast.py	2014-03-19 18:26:33 +0000
++++ conkyForecast.py	2014-03-19 18:27:39 +0000
+@@ -814,7 +814,7 @@
+                     #visibility_unit = self.getText(head_n, 'ud')
+                     
+                     location_n = self.getChild(weather_n, 'loc')
+-                    city, country = self.getText(location_n, 'dnam').split(',')
++                    city, code, country = self.getText(location_n, 'dnam').split(',')
+                     country = country.strip()
+                     
+                     # current conditions data
+
