@@ -1,0 +1,43 @@
+From b585a7af19bef1a30e23d566419f5f6c79ab294c Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 3 Aug 2014 15:58:31 +0100
+Subject: fix lircd option typos
+
+---
+ daemons/lircd.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/daemons/lircd.c b/daemons/lircd.c
+index 13f5597..f81b3e6 100644
+--- a/daemons/lircd.c
++++ b/daemons/lircd.c
+@@ -2130,7 +2130,7 @@ static void lircd_add_defaults(void)
+ 		"lircd:logfile", 	LOGFILE,
+ 		"lircd:debug", 		"False",
+ 		"lircd:release", 	NULL,
+-		"lircd:allow_simulate", "False",
++		"lircd:allow-simulate", "False",
+ 		"lircd:plugindir", 	PLUGINDIR,
+ 		"lircd:uinput", 	"False",
+ 		"lircd:repeat-max", 	 DEFAULT_REPEAT_MAX,
+@@ -2193,7 +2193,7 @@ static void lircd_parse_options(int argc, char** argv)
+ 			break;
+ #               endif
+ 		case 'o':
+-			options_set_opt("lircd:lircdfile", optarg);
++			options_set_opt("lircd:output", optarg);
+ 			break;
+ 		case 'l':
+ 			options_set_opt("lircd:listen", "True");
+@@ -2304,7 +2304,7 @@ int main(int argc, char **argv)
+ #       endif
+ 	userelease = options_getboolean("lircd:release");
+ 	set_release_suffix(options_getstring("lircd:release_suffix"));
+-	allow_simulate = options_getboolean("lircd:allow_simulate");
++	allow_simulate = options_getboolean("lircd:allow-simulate");
+ #       if defined(__linux__)
+ 	useuinput = options_getboolean("lircd:uinput");
+ #       endif
+-- 
+1.8.4
+

@@ -60,3 +60,6 @@ a dumping ground for patches which fix functionality
 ### conkyforecast
 -fix_.add.missing.variable.in.location.assignment.diff [bzr r70 | unsubmitted]
 
+### lirc
+-fix.lircd.option.typos.diff [git sha:8c43501fbe5d43391acaf0e4fb78c0eab816e598 | committed (partial)]
+
