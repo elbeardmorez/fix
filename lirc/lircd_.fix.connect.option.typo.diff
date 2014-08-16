@@ -1,0 +1,25 @@
+From 7e297fd080a27d90d0a8fc33572c86161aa71f3b Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sat, 16 Aug 2014 21:11:02 +0100
+Subject: [PATCH] lircd: fix connect option typo
+
+---
+ daemons/lircd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/daemons/lircd.c b/daemons/lircd.c
+index b64ace4..f262b67 100644
+--- a/daemons/lircd.c
++++ b/daemons/lircd.c
+@@ -2340,7 +2340,7 @@ int main(int argc, char **argv)
+ 	}
+ 	opt = options_getstring("lircd:connect");
+ 	if (opt != NULL) {
+-		if (!add_peer_connection(optarg))
++		if (!add_peer_connection(opt))
+ 			return(EXIT_FAILURE);
+ 	}
+ 	debug_opt = options_getint("lircd:debug");
+-- 
+1.8.4
+
