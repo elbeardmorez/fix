@@ -1,0 +1,12 @@
+
+# fix.map.option.parsing.for.'strictatime'.diff [git sha:c15e19413286a6e93faea1120e13bbde3bfeb76f | pending]
+Added a trivial token length check to ensure the 'strictatime'
+mount option is not consumed by string logic for the 'strict'
+automount option.
+
+Pre-patch, adding the 'strictatime' to a map effectively switched
+strict mode (for multi-mount handling) on, and failed to pass the
+'strictatime' option through to 'mount'.
+
+This will have been an issue since 'strictatime' was introduced
+for the 2.6.30 kernel.
