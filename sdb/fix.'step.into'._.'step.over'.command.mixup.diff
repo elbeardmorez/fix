@@ -1,0 +1,65 @@
+From eb613b1b781ec6880a733de62482728b5185fa5b Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Wed, 11 Feb 2015 17:19:25 +0000
+Subject: Fix 'step into' / 'step over' command mixup
+
+From Mono.Debugging/Mono.Debugging.Client/DebuggerSession.cs
+
+// Executes one line of code
+public void NextLine ()
+
+// Executes one line of code, stepping into method invocations
+public void StepLine ()
+
+However, sdb's 'step over line' and 'step into line' commands called
+'StepLine()' and 'NextLine()' respectively, hence a straight switch
+was needed
+
+'StepInstruction/NextInstruction' usage needed the same correction
+---
+ src/Debugger.cs | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/Debugger.cs b/src/Debugger.cs
+index be3c4f5..cdeb21c 100644
+--- a/src/Debugger.cs
++++ b/src/Debugger.cs
+@@ -520,7 +520,7 @@ namespace Mono.Debugger.Client
+             {
+                 if (_session != null && !_session.IsRunning && !_session.HasExited)
+                 {
+-                    _session.StepLine();
++                    _session.NextLine();
+ 
+                     CommandLine.InferiorExecuting = true;
+                 }
+@@ -533,7 +533,7 @@ namespace Mono.Debugger.Client
+             {
+                 if (_session != null && !_session.IsRunning && !_session.HasExited)
+                 {
+-                    _session.StepInstruction();
++                    _session.NextInstruction();
+ 
+                     CommandLine.InferiorExecuting = true;
+                 }
+@@ -546,7 +546,7 @@ namespace Mono.Debugger.Client
+             {
+                 if (_session != null && !_session.IsRunning && !_session.HasExited)
+                 {
+-                    _session.NextLine();
++                    _session.StepLine();
+ 
+                     CommandLine.InferiorExecuting = true;
+                 }
+@@ -559,7 +559,7 @@ namespace Mono.Debugger.Client
+             {
+                 if (_session != null && !_session.IsRunning && !_session.HasExited)
+                 {
+-                    _session.NextInstruction();
++                    _session.StepInstruction();
+ 
+                     CommandLine.InferiorExecuting = true;
+                 }
+-- 
+1.8.4
+

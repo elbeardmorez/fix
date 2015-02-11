@@ -67,3 +67,6 @@ a dumping ground for patches which fix functionality
 ### autofs
 -fix.map.option.parsing.for.'strictatime'.diff [git sha:c15e19413286a6e93faea1120e13bbde3bfeb76f | pending]
 
+### sdb
+-fix.'step.into'._.'step.over'.command.mixup.diff [git sha:39367e4e1b0578eb6ec344f82da984f65b5bae92 | pending]
+

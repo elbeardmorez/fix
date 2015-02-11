@@ -1,0 +1,15 @@
+
+# fix.'step.into'._.'step.over'.command.mixup.diff [git sha:39367e4e1b0578eb6ec344f82da984f65b5bae92 | pending]
+From Mono.Debugging/Mono.Debugging.Client/DebuggerSession.cs
+
+// Executes one line of code
+public void NextLine ()
+
+// Executes one line of code, stepping into method invocations
+public void StepLine ()
+
+However, sdb's 'step over line' and 'step into line' commands called
+'StepLine()' and 'NextLine()' respectively, hence a straight switch
+was needed
+
+'StepInstruction/NextInstruction' usage needed the same correction
