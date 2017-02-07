@@ -70,3 +70,6 @@ a dumping ground for patches which fix functionality
 ### sdb
 -fix.'step.into'._.'step.over'.command.mixup.diff [git sha:eb613b1b781ec6880a733de62482728b5185fa5b | committed]
 
+### drumstick
+-add.missing.tab.stop.in.preferences.diff [git sha:872a458f542a58e8c3701d6e9449349a5ff751f8 | pending]
+

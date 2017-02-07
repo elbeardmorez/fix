@@ -1,0 +1,24 @@
+From 872a458f542a58e8c3701d6e9449349a5ff751f8 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 5 Feb 2017 10:37:36 +0000
+Subject: add missing tab stop in preferences
+
+---
+ utils/vpiano/preferences.ui | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/utils/vpiano/preferences.ui b/utils/vpiano/preferences.ui
+index 9a04159..b161f72 100644
+--- a/utils/vpiano/preferences.ui
++++ b/utils/vpiano/preferences.ui
+@@ -243,6 +243,7 @@
+   <tabstop>spinVelocity</tabstop>
+   <tabstop>spinBaseOctave</tabstop>
+   <tabstop>spinNumKeys</tabstop>
++  <tabstop>comboNotes</tabstop>
+   <tabstop>buttonBox</tabstop>
+  </tabstops>
+  <resources/>
+-- 
+1.8.4
+
