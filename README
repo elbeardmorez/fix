@@ -73,3 +73,6 @@ a dumping ground for patches which fix functionality
 ### drumstick
 -add.missing.tab.stop.in.preferences.diff [git sha:872a458f542a58e8c3701d6e9449349a5ff751f8 | pending]
 
+### quodlibet
+-fix.album.art.multi-page.results.bug.diff [git sha:8eb0cb4aaa3daae2db581fa1fc28df8e1645d33c | pending]
+

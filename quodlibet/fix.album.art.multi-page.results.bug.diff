@@ -1,0 +1,25 @@
+From 8eb0cb4aaa3daae2db581fa1fc28df8e1645d33c Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Mon, 31 Jul 2017 20:22:40 +0100
+Subject: fix album art multi-page results bug
+
+---
+ quodlibet/quodlibet/ext/songsmenu/albumart.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/quodlibet/quodlibet/ext/songsmenu/albumart.py b/quodlibet/quodlibet/ext/songsmenu/albumart.py
+index 41372f0..9a4fca3 100644
+--- a/quodlibet/quodlibet/ext/songsmenu/albumart.py
++++ b/quodlibet/quodlibet/ext/songsmenu/albumart.py
+@@ -295,7 +295,7 @@ class DiscogsParser(object):
+         page = 1
+         while len(self.covers) < limit:
+             self.__parse_page(page, query)
+-            if page < self.page_count:
++            if page >= self.page_count:
+                 break
+             page += 1
+ 
+-- 
+1.8.4
+
