@@ -1,0 +1,25 @@
+From a076a8773df81d1eec18790e8e9a2d0b06eb1063 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sat, 5 Aug 2017 07:53:42 +0100
+Subject: fix typo
+
+---
+ quodlibet/tests/test_qltk_paned.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/quodlibet/tests/test_qltk_paned.py b/quodlibet/tests/test_qltk_paned.py
+index 11133a0..a82675d 100644
+--- a/quodlibet/tests/test_qltk_paned.py
++++ b/quodlibet/tests/test_qltk_paned.py
+@@ -119,7 +119,7 @@ class TMultiPaned(object):
+         self.assertIs(sws[0], paned.get_child1())
+         self.assertIs(sws[1], paned.get_child2())
+ 
+-        # 3 wigets
++        # 3 widgets
+         sws = [Gtk.ScrolledWindow() for _ in range(3)]
+         p.set_widgets(sws)
+ 
+-- 
+1.8.4
+
