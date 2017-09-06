@@ -1,0 +1,26 @@
+From 75dafbaba8f80a550df3220e01571cfd2468f636 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Wed, 6 Sep 2017 15:54:06 +0100
+Subject: fix no-op bug
+
+---
+ quodlibet/quodlibet/qltk/widgetbar.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/quodlibet/quodlibet/qltk/widgetbar.py b/quodlibet/quodlibet/qltk/widgetbar.py
+index e77b18d..c67c314 100644
+--- a/quodlibet/quodlibet/qltk/widgetbar.py
++++ b/quodlibet/quodlibet/qltk/widgetbar.py
+@@ -107,8 +107,7 @@ class WidgetBar(Gtk.Expander):
+     def __preferences(self):
+         plugins_window = PluginWindow(get_top_parent(self))
+         plugins_window.show()
+-        if id:
+-            plugins_window.move_to(self.id)
++        plugins_window.move_to(self.id)
+ 
+     def __expand(self, widget, prop, menu_button):
+         expanded = self.get_expanded()
+-- 
+1.8.4
+
