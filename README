@@ -77,5 +77,5 @@ a dumping ground for patches which fix functionality
 -fix.album.art.multi-page.results.bug.diff [git sha:4db1c1cbe98964a13a2b8b17d32c03c4bc3b975b | pending]
 -fix.special.glob.characters.escaping.diff [git sha:ffe96006fd4a093cdb362d0eef1884f8087be54f | pending]
 -fix.typo.diff [git sha:9466202d22c99e59f211234e3c65bbb92de49153 | pending]
+-remove.redundant.attribute.tests.diff [git sha:2c339bc164d47e9d08a5ee33e7163c18ae2c85aa | pending]
 -pluginswidgetbar,.workaround.'bizarre.loss.of.closure.state'.diff [git sha:409f5eefb6d78887f01fe596789e4b4febebfc97 | pending]
-
