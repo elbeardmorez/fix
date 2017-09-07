@@ -1,7 +1,8 @@
-From da66637dd5885edb135962028afd07fd155a0b54 Mon Sep 17 00:00:00 2001
+From 409f5eefb6d78887f01fe596789e4b4febebfc97 Mon Sep 17 00:00:00 2001
 From: Pete Beardmore <pete.beardmore@msn.com>
 Date: Sat, 2 Sep 2017 15:12:01 +0100
-Subject: pluginswidgetbar, workaround 'bizarre loss of closure state'
+Subject: pluginswidgetbar, workaround 'bizarre loss of closure
+ state'
 
 ---
  quodlibet/quodlibet/ext/ui/plugins_widgetbar.py | 42 ++++++++++++++-----------
