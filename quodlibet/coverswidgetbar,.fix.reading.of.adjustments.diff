@@ -1,0 +1,29 @@
+From 751e005fec6dc88a0a4399db08062e2755225367 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Mon, 11 Sep 2017 07:50:15 +0100
+Subject: coverswidgetbar, fix reading of Adjustments
+
+---
+ quodlibet/quodlibet/ext/covers/covers_widgetbar.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/quodlibet/quodlibet/ext/covers/covers_widgetbar.py b/quodlibet/quodlibet/ext/covers/covers_widgetbar.py
+index 1ef1d7a..2633c7e 100644
+--- a/quodlibet/quodlibet/ext/covers/covers_widgetbar.py
++++ b/quodlibet/quodlibet/ext/covers/covers_widgetbar.py
+@@ -376,10 +376,10 @@ class CoversWidgetBarPlugin(UserInterfacePlugin, EventPlugin):
+             lambda x: x)
+ 
+     def __songs_save_changed(self, widget, *data):
+-        CONFIG.songs_save = widget.get_numeric()
++        CONFIG.songs_save = int(widget.get_value())
+ 
+     def __ignore_in_last_changed(self, widget, *data):
+-        CONFIG.ignore_in_last = widget.get_numeric()
++        CONFIG.ignore_in_last = int(widget.get_value())
+ 
+     def __follow_front(self):
+         if CONFIG.follow_front:
+-- 
+1.8.4
+
