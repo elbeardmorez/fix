@@ -1,0 +1,25 @@
+From 4309007e375a26251aec2db255b436b246a6ab39 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Mon, 18 Sep 2017 21:20:15 +0100
+Subject: replace 'nix only 'samefile' function
+
+---
+ quodlibet/quodlibet/qltk/renamefiles.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/quodlibet/quodlibet/qltk/renamefiles.py b/quodlibet/quodlibet/qltk/renamefiles.py
+index 946e663..9e4d86b 100644
+--- a/quodlibet/quodlibet/qltk/renamefiles.py
++++ b/quodlibet/quodlibet/qltk/renamefiles.py
+@@ -361,7 +361,7 @@ class RenameFiles(Gtk.VBox):
+ 
+         path_old = os.path.dirname(os.path.realpath(pathfile_old))
+         path_new = os.path.dirname(os.path.realpath(pathfile_new))
+-        if os.path.samefile(path_old, path_new):
++        if os.path.realpath(path_old) == os.path.realpath(path_new):
+             return
+         if (path_old in art_sets.keys() and not art_sets[path_old]):
+             return
+-- 
+1.8.4
+
