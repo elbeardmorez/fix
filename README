@@ -83,4 +83,5 @@ a dumping ground for patches which fix functionality
 -coverswidgetbar,.fix.reading.of.adjustments.diff [git sha:751e005fec6dc88a0a4399db08062e2755225367 | pending]
 -coverswidgetbar,.fix.'ignore.in.last'.feature.diff [git sha:6fd9245038b7fefd9c5a855960ae9ccb12cf3b67 | pending]
 -coverswidgetbar,.fix.file.name.generation.for.non-ascii.titles.diff [git sha:16c9dea940825e2cd9b8f06a34a3b0fae229d837 | pending]
+-coverswidgetbar,.fix.unique.keys.for.duplicate.embedded.art.types.diff [git sha:9b8042582f3673ea7881caf9ba2e800c44aaf041 | pending]
 -pluginswidgetbar,.workaround.'bizarre.loss.of.closure.state'.diff [git sha:409f5eefb6d78887f01fe596789e4b4febebfc97 | pending]

@@ -1,0 +1,25 @@
+From 9b8042582f3673ea7881caf9ba2e800c44aaf041 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 24 Sep 2017 18:47:49 +0100
+Subject: coverswidgetbar, fix unique keys for duplicate embedded art
+ types
+
+---
+ quodlibet/quodlibet/ext/covers/covers_widgetbar.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/quodlibet/quodlibet/ext/covers/covers_widgetbar.py b/quodlibet/quodlibet/ext/covers/covers_widgetbar.py
+index 44af49d..fa89821 100644
+--- a/quodlibet/quodlibet/ext/covers/covers_widgetbar.py
++++ b/quodlibet/quodlibet/ext/covers/covers_widgetbar.py
+@@ -274,6 +274,7 @@ class CoversBox(Gtk.HBox):
+                         while itype + str(suffix) in types:
+                             suffix += 1
+                         itype = itype + str(suffix)
++                    types[itype] = True
+                     key = path_hash + "_" + itype
+                     f = os.path.join(path_thumbs, key)
+ 
+-- 
+1.8.4
+
