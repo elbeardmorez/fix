@@ -85,3 +85,4 @@ a dumping ground for patches which fix functionality
 -coverswidgetbar,.fix.file.name.generation.for.non-ascii.titles.diff [git sha:16c9dea940825e2cd9b8f06a34a3b0fae229d837 | pending]
 -coverswidgetbar,.fix.unique.keys.for.duplicate.embedded.art.types.diff [git sha:9b8042582f3673ea7881caf9ba2e800c44aaf041 | pending]
 -pluginswidgetbar,.workaround.'bizarre.loss.of.closure.state'.diff [git sha:409f5eefb6d78887f01fe596789e4b4febebfc97 | pending]
+-embeddedartwidgetbar,.fix.highlight.box.closure.context.diff [git sha:dc61feecc980ff65de1625b2007ea8931cfb1eef | pending]

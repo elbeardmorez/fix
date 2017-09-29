@@ -1,0 +1,36 @@
+From dc61feecc980ff65de1625b2007ea8931cfb1eef Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Fri, 29 Sep 2017 07:46:44 +0100
+Subject: embeddedartwidgetbar, fix highlight box closure context
+
+---
+ quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py b/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py
+index 916ffddf9..855131775 100644
+--- a/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py
++++ b/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py
+@@ -192,8 +192,8 @@ class EmbeddedArtBox(Gtk.HBox):
+             image_widget_outer.add(image_widget_vborder)
+ 
+             def highlight_toggle(box):
+-                scv = image_widget_vborder.get_style_context()
+-                sch = image_widget_hborder.get_style_context()
++                scv = box.vborder.get_style_context()
++                sch = box.hborder.get_style_context()
+                 if scv.has_class('highlightbox'):
+                     scv.remove_class('highlightbox')
+                     sch.remove_class('highlightbox')
+@@ -204,6 +204,8 @@ class EmbeddedArtBox(Gtk.HBox):
+                     box.is_selected = True
+                 self.update_select_count()
+ 
++            image_widget.vborder = image_widget_vborder
++            image_widget.hborder = image_widget_hborder
+             image_widget.highlight_toggle = highlight_toggle
+ 
+             tooltip = []
+-- 
+2.14.1
+
