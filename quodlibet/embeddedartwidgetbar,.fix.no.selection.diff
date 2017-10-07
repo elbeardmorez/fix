@@ -1,0 +1,29 @@
+From 2e6ab9bb0e9de4046691b537d240701462a4cb80 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sat, 7 Oct 2017 08:13:05 +0100
+Subject: embeddedartwidgetbar, fix no selection
+
+---
+ quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py b/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py
+index fd4891934..f37eaf909 100644
+--- a/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py
++++ b/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py
+@@ -97,10 +97,11 @@ class EmbeddedArtBox(Gtk.HBox):
+ 
+         self.__songs = songs
+ 
++        self.__clear_covers()
++
+         if not songs:
+             return
+ 
+-        self.__clear_covers()
+         for song in songs:
+             imageitems = self.__get_artwork(song)
+             if len(self.image_widgets) == self.covers_max:
+-- 
+2.14.1
+
