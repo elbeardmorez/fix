@@ -78,6 +78,7 @@ a dumping ground for patches which fix functionality
 -fix.special.glob.characters.escaping.diff [git sha:ffe96006fd4a093cdb362d0eef1884f8087be54f | pending]
 -replace.'nix.only.'samefile'.function.diff [git sha:4309007e375a26251aec2db255b436b246a6ab39 | pending]
 -fix.default.search.path.for.non.'nix.diff [git sha:698294bd9f27381fed2cf632795cef7f9fe82e46 | pending]
+-fix.nt.url.encoding_decoding.bug.in.test.diff [git sha:a2d90edf59b6c709d9997ca27cc0bb22fe347db4 | pending]
 -fix.typo.diff [git sha:9466202d22c99e59f211234e3c65bbb92de49153 | pending]
 -remove.redundant.attribute.tests.diff [git sha:2c339bc164d47e9d08a5ee33e7163c18ae2c85aa | pending]
 -fix.no-op.bug.diff [git sha:75dafbaba8f80a550df3220e01571cfd2468f636 | pending]

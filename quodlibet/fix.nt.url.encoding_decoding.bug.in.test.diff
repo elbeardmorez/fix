@@ -1,0 +1,96 @@
+From a2d90edf59b6c709d9997ca27cc0bb22fe347db4 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 5 Nov 2017 11:47:44 +0000
+Subject: fix nt url encoding/decoding bug in test
+
+---
+ quodlibet/tests/test_formats__audio.py | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/quodlibet/tests/test_formats__audio.py b/quodlibet/tests/test_formats__audio.py
+index f2d985c56..08a098762 100644
+--- a/quodlibet/tests/test_formats__audio.py
++++ b/quodlibet/tests/test_formats__audio.py
+@@ -15,7 +15,7 @@ from quodlibet.formats import AudioFile, types as format_types, AudioFileError
+ from quodlibet.formats._audio import NUMERIC_ZERO_DEFAULT
+ from quodlibet.formats import decode_value, MusicFile, FILESYSTEM_TAGS
+ from quodlibet.util.tags import _TAGS as TAGS
+-from quodlibet.util.path import normalize_path, mkdir, get_home_dir
++from quodlibet.util.path import normalize_path, mkdir, get_home_dir, unquote
+ 
+ from .helper import temp_filename
+ 
+@@ -424,7 +424,7 @@ class TAudioFile(TestCase):
+             mkdir(p)
+             with io.open(fp, "w", encoding='utf-8') as f:
+                 f.write(u"")
+-            fp_searched = s.lyric_filename
++            fp_searched = unquote(s.lyric_filename)
+             os.remove(fp)
+             os.rmdir(p)
+             self.failUnlessEqual(fp_searched, fp)
+@@ -434,7 +434,7 @@ class TAudioFile(TestCase):
+             fp = os.path.join(root, artist + " - " + title + ".lyric")
+             with io.open(fp, "w", encoding='utf-8') as f:
+                 f.write(u"")
+-            fp_searched = s.lyric_filename
++            fp_searched = unquote(s.lyric_filename)
+             os.remove(fp)
+             self.failUnlessEqual(fp_searched, fp)
+ 
+@@ -446,14 +446,14 @@ class TAudioFile(TestCase):
+ 
+             # test custom default (fnf fallback!)
+             fp = os.path.join(root, artist + ".-." + title)
+-            fp_searched = s.lyric_filename
++            fp_searched = unquote(s.lyric_filename)
+             self.failUnlessEqual(fp_searched, fp)
+ 
+             # test user defined
+             fp = os.path.join(root, artist + " - " + title + ".lyric")
+             with io.open(fp, "w", encoding='utf-8') as f:
+                 f.write(u"")
+-            fp_searched = s.lyric_filename
++            fp_searched = unquote(s.lyric_filename)
+             os.remove(fp)
+             self.failUnlessEqual(fp_searched, fp)
+ 
+@@ -468,7 +468,7 @@ class TAudioFile(TestCase):
+             with io.open(fp, "w", encoding='utf-8') as f:
+                 f.write(u"")
+             mkdir(p2)
+-            fp_searched = s.lyric_filename
++            fp_searched = unquote(s.lyric_filename)
+             os.remove(fp2)
+             os.rmdir(p2)
+             os.remove(fp)
+@@ -478,7 +478,7 @@ class TAudioFile(TestCase):
+             fp = os.path.join(root, artist + " - " + title + ".txt")
+             with io.open(fp, "w", encoding='utf-8') as f:
+                 f.write(u"")
+-            fp_searched = s.lyric_filename
++            fp_searched = unquote(s.lyric_filename)
+             os.remove(fp)
+             self.failUnlessEqual(fp_searched, fp)
+ 
+@@ -492,7 +492,7 @@ class TAudioFile(TestCase):
+                 fp = os.path.join(root, artist + " - " + title + ".lyric")
+                 with io.open(fp, "w", encoding='utf-8') as f:
+                     f.write(u"")
+-                fp_searched = s.lyric_filename
++                fp_searched = unquote(s.lyric_filename)
+                 os.remove(fp)
+                 self.failUnlessEqual(fp_searched, fp)
+ 
+@@ -505,7 +505,7 @@ class TAudioFile(TestCase):
+             mkdir(p)
+             with io.open(fp, "w", encoding='utf-8') as f:
+                 f.write(u"")
+-            fp_searched = s.lyric_filename
++            fp_searched = unquote(s.lyric_filename)
+             os.remove(fp)
+             os.rmdir(p)
+             self.failUnlessEqual(fp_searched, fp)
+-- 
+2.14.1
+
