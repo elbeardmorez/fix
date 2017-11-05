@@ -1,0 +1,34 @@
+From 698294bd9f27381fed2cf632795cef7f9fe82e46 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 5 Nov 2017 08:14:26 +0000
+Subject: fix default search path for non 'nix
+
+---
+ quodlibet/quodlibet/formats/_audio.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/quodlibet/quodlibet/formats/_audio.py b/quodlibet/quodlibet/formats/_audio.py
+index 9f95f9d70..2803d556d 100644
+--- a/quodlibet/quodlibet/formats/_audio.py
++++ b/quodlibet/quodlibet/formats/_audio.py
+@@ -22,7 +22,7 @@ from quodlibet import _, print_d
+ from quodlibet import util
+ from quodlibet import config
+ from quodlibet.util.path import mkdir, mtime, expanduser, \
+-    normalize_path, escape_filename, ismount
++    normalize_path, escape_filename, ismount, get_home_dir
+ from quodlibet.util.string import encode, decode, isascii
+ 
+ from quodlibet.util import iso639
+@@ -553,7 +553,7 @@ class AudioFile(dict, ImageContainer):
+         lyric_paths = \
+             config.getstringlist("memory", "lyric_rootpaths", [])
+         # ensure a default path
+-        lyric_paths.append(u'~/.lyrics')
++        lyric_paths.append(os.path.join(get_home_dir(), ".lyrics"))
+         # search pathfile names
+         lyric_filenames = \
+             config.getstringlist("memory", "lyric_filenames", [])
+-- 
+2.14.1
+
