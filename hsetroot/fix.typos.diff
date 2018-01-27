@@ -1,0 +1,34 @@
+From 10bf51093efbbdf8a72080e82de3d0cfb2a4d8c4 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sat, 27 Jan 2018 14:43:47 +0000
+Subject: fix typos
+
+---
+ src/hsetroot.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/hsetroot.c b/src/hsetroot.c
+index f878eb6..a6bd1f3 100644
+--- a/src/hsetroot.c
++++ b/src/hsetroot.c
+@@ -36,7 +36,7 @@ usage(char *commandline)
+     " -tile <image>              Render an image tiled\n"
+     " -full <image>              Render an image maximum aspect\n"
+     " -extend <image>            Render an image max aspect and fill borders\n"
+-    " -fill <image>              Render an image strechted\n"
++    " -fill <image>              Render an image stretched\n"
+     "\n"
+     "Manipulations:\n"
+     " -tint <color>              Tint the current image\n"
+@@ -53,7 +53,7 @@ usage(char *commandline)
+     " -alpha <amount>            Adjust alpha level for colors and images\n"
+     " -write <filename>          Write current image to file\n"
+     "\n"
+-    "Colors are in the #rrbbgg or #rrggbbaa format.\n"
++    "Colors are in the #rrggbb or #rrggbbaa format.\n"
+     "\n"
+     "Create issues at https://github.com/himdel/hsetroot/issues\n\n"
+   , commandline);
+-- 
+2.14.1
+
