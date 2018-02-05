@@ -9,6 +9,9 @@
 
 # fix.nt.url.encoding_decoding.bug.in.test.diff [git sha:a2d90edf59b6c709d9997ca27cc0bb22fe347db4 | pending]
 
+# fix.searching.for.special.escaped.character.on.nt.os.diff [git sha:7bf86c5d7bc39c3d5925be2105d9ce53957fbe11 | pending]
+-use RootPathFile containers to ease testing of escaped file parts
+
 # fix.typo.diff [git sha:9466202d22c99e59f211234e3c65bbb92de49153 | pending]
 
 # remove.redundant.attribute.tests.diff [git sha:2c339bc164d47e9d08a5ee33e7163c18ae2c85aa | pending]
@@ -30,4 +33,3 @@
 # embeddedartwidgetbar,.fix.no.selection.diff [git sha:2e6ab9bb0e9de4046691b537d240701462a4cb80 | pending]
 
 # embeddedartwidgetbar,.fix.selection.based.control.sensitivity.diff [git sha:8245387a9cc74b20c150f52ea0b09bd7b3dfde85 | pending]
-
