@@ -98,3 +98,4 @@ a dumping ground for patches which fix functionality
 ### fluxbox
 -fbtk,.textbox,.fix.text.vertical.centering.diff [git sha:3828dddd13fb45dd3bbdef3cf616733fe4ca1716 | pending]
 -fbtk,.textbox,.fix.cursor.position.and.size.diff [git sha:27fbf3199514b6fdb2a4f0266862b173a127b51c | pending]
+-fbtk,.textbox,.fix.selection.release.on.click.diff [git sha:2e9994de39dd64f9a4f1adfc6bb6df9307510983 | pending]

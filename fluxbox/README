@@ -5,3 +5,5 @@
 -use font height for cursor
 -prefer 'descent to ascent' coverage as opposed to 'baseline plus
 way too high'!
+
+# fbtk,.textbox,.fix.selection.release.on.click.diff [git sha:2e9994de39dd64f9a4f1adfc6bb6df9307510983 | pending]

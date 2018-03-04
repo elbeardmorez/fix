@@ -1,0 +1,25 @@
+From 2e9994de39dd64f9a4f1adfc6bb6df9307510983 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 4 Mar 2018 21:55:14 +0000
+Subject: fbtk, textbox, fix selection release on click
+
+---
+ src/FbTk/TextBox.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/FbTk/TextBox.cc b/src/FbTk/TextBox.cc
+index aeb411c7..dcd51a7e 100644
+--- a/src/FbTk/TextBox.cc
++++ b/src/FbTk/TextBox.cc
+@@ -285,6 +285,8 @@ void TextBox::buttonPressEvent(XButtonEvent &event) {
+             }
+         }
+         m_cursor_pos = click_pos - m_start_pos;
++        m_select_pos = std::string::npos; // clear select
++        adjustPos();
+         clear();
+     }
+ }
+-- 
+2.14.1
+
