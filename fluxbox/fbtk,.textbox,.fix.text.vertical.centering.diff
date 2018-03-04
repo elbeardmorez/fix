@@ -1,0 +1,25 @@
+From 3828dddd13fb45dd3bbdef3cf616733fe4ca1716 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 4 Mar 2018 21:44:35 +0000
+Subject: fbtk, textbox, fix text vertical centering
+
+---
+ src/FbTk/TextBox.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/FbTk/TextBox.cc b/src/FbTk/TextBox.cc
+index 2cfec301..2e3ed7f8 100644
+--- a/src/FbTk/TextBox.cc
++++ b/src/FbTk/TextBox.cc
+@@ -211,7 +211,7 @@ void TextBox::clear() {
+     Display *dpy = FbTk::App::instance()->display();
+     FbWindow::clear();
+     // center text by default
+-    int center_pos = (height() + font().ascent())/2;
++    int center_pos = (height() - font().height())/2 + font().ascent();
+     if (gc() == 0)
+         setGC(DefaultGC(dpy, screenNumber()));
+ 
+-- 
+2.14.1
+
