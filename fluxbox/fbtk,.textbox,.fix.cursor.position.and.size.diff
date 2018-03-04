@@ -1,0 +1,28 @@
+From 27fbf3199514b6fdb2a4f0266862b173a127b51c Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 4 Mar 2018 21:47:34 +0000
+Subject: fbtk, textbox, fix cursor position and size
+
+-use font height for cursor
+-prefer 'descent to ascent' coverage as opposed to 'baseline plus
+way too high'!
+---
+ src/FbTk/TextBox.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/FbTk/TextBox.cc b/src/FbTk/TextBox.cc
+index 2e3ed7f8..8384c459 100644
+--- a/src/FbTk/TextBox.cc
++++ b/src/FbTk/TextBox.cc
+@@ -250,7 +250,7 @@ void TextBox::clear() {
+ 
+ 
+     // draw cursor position
+-    drawLine(gc(), cursor_pos, center_pos, cursor_pos, center_pos - font().height());
++    drawLine(gc(), cursor_pos, height()/2 + font().ascent()/2, cursor_pos, height()/2 - font().ascent()/2);
+ }
+ 
+ void TextBox::moveResize(int x, int y,
+-- 
+2.14.1
+
