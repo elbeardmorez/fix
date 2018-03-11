@@ -1,0 +1,33 @@
+From 98d0583d539dcad75bb1f758f6e1b88dfe4829cd Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 11 Mar 2018 09:33:20 +0000
+Subject: fix harmonisation of initial pane sort order
+
+-fixes 'test_qltk_prefs', don't assume plugin layer is initialised!
+---
+ quodlibet/quodlibet/qltk/quodlibetwindow.py | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/quodlibet/quodlibet/qltk/quodlibetwindow.py b/quodlibet/quodlibet/qltk/quodlibetwindow.py
+index cd58760c7..4df2d134a 100644
+--- a/quodlibet/quodlibet/qltk/quodlibetwindow.py
++++ b/quodlibet/quodlibet/qltk/quodlibetwindow.py
+@@ -917,10 +917,11 @@ class QuodLibetWindow(Window, PersistentWindowMixin, AppWindow):
+         order = config.getstringlist('memory', 'pane_order') # default only
+ 
+         widgetbars = self.widgetbars_enabled
+-        widgetbars_order = \
+-            config.getstringlist('plugins', 'widgetbars_pane_order')
+-        if widgetbars and widgetbars_order:
+-            order = widgetbars_order
++        if widgetbars:
++            widgetbars_order =\
++                config.getstringlist('plugins', 'widgetbars_pane_order')
++            if widgetbars_order:
++                order = widgetbars_order
+ 
+         if 'main' not in order:
+             order = ['main'] + order
+-- 
+2.14.1
+
