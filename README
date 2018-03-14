@@ -77,9 +77,9 @@ a dumping ground for patches which fix functionality
 -fix.typos.diff [git sha:10bf51093efbbdf8a72080e82de3d0cfb2a4d8c4 | pending]
 
 ### quodlibet
--fix.album.art.multi-page.results.bug.diff [git sha:4db1c1cbe98964a13a2b8b17d32c03c4bc3b975b | pending]
--fix.special.glob.characters.escaping.diff [git sha:ffe96006fd4a093cdb362d0eef1884f8087be54f | pending]
--replace.'nix.only.'samefile'.function.diff [git sha:4309007e375a26251aec2db255b436b246a6ab39 | pending]
+-fix.album.art.multi-page.results.bug.diff [git sha:37b62b8a2f200dfd02586049d5676947fa2a889b | commmitted]
+-fix.special.glob.characters.escaping.diff [git sha:75202a669d610aec44d76a991f06c3401deb6ae4 | committed]
+-replace.'nix.only.'samefile'.function.diff [git sha:75202a669d610aec44d76a991f06c3401deb6ae4 | committed]
 -fix.default.search.path.for.non.'nix.diff [git sha:698294bd9f27381fed2cf632795cef7f9fe82e46 | pending]
 -fix.nt.url.encoding_decoding.bug.in.test.diff [git sha:a2d90edf59b6c709d9997ca27cc0bb22fe347db4 | pending]
 -fix.searching.for.special.escaped.character.on.nt.os.diff [git sha:7bf86c5d7bc39c3d5925be2105d9ce53957fbe11 | pending]
@@ -98,6 +98,6 @@ a dumping ground for patches which fix functionality
 -embeddedartwidgetbar,.fix.selection.based.control.sensitivity.diff [git sha:8245387a9cc74b20c150f52ea0b09bd7b3dfde85 | pending]
 
 ### fluxbox
--fbtk,.textbox,.fix.text.vertical.centering.diff [git sha:3828dddd13fb45dd3bbdef3cf616733fe4ca1716 | pending]
--fbtk,.textbox,.fix.cursor.position.and.size.diff [git sha:27fbf3199514b6fdb2a4f0266862b173a127b51c | pending]
--fbtk,.textbox,.fix.selection.release.on.click.diff [git sha:2e9994de39dd64f9a4f1adfc6bb6df9307510983 | pending]
+-fbtk,.textbox,.fix.text.vertical.centering.diff [git sha:79ce3ef424754d65081957121dcbe6efbc1885d2 | committed]
+-fbtk,.textbox,.fix.cursor.position.and.size.diff [git sha:375e41bb37da296e5d7803c7ea97d9320516cba7 | committed]
+-fbtk,.textbox,.fix.selection.release.on.click.diff [git sha:f19bb5787f8ec9e2faf3c30e366709a3c6087b96 | committed]

@@ -1,9 +1,9 @@
 
-# fix.album.art.multi-page.results.bug.diff [git sha:4db1c1cbe98964a13a2b8b17d32c03c4bc3b975b | pending]
+# fix.album.art.multi-page.results.bug.diff [git sha:37b62b8a2f200dfd02586049d5676947fa2a889b | commmitted]
 
-# fix.special.glob.characters.escaping.diff [git sha:ffe96006fd4a093cdb362d0eef1884f8087be54f | pending]
+# fix.special.glob.characters.escaping.diff [git sha:75202a669d610aec44d76a991f06c3401deb6ae4 | committed]
 
-# replace.'nix.only.'samefile'.function.diff [git sha:4309007e375a26251aec2db255b436b246a6ab39 | pending]
+# replace.'nix.only.'samefile'.function.diff [git sha:75202a669d610aec44d76a991f06c3401deb6ae4 | committed]
 
 # fix.default.search.path.for.non.'nix.diff [git sha:698294bd9f27381fed2cf632795cef7f9fe82e46 | pending]
 

@@ -1,9 +1,9 @@
 
-# fbtk,.textbox,.fix.text.vertical.centering.diff [git sha:3828dddd13fb45dd3bbdef3cf616733fe4ca1716 | pending]
+# fbtk,.textbox,.fix.text.vertical.centering.diff [git sha:79ce3ef424754d65081957121dcbe6efbc1885d2 | committed]
 
-# fbtk,.textbox,.fix.cursor.position.and.size.diff [git sha:27fbf3199514b6fdb2a4f0266862b173a127b51c | pending]
+# fbtk,.textbox,.fix.cursor.position.and.size.diff [git sha:375e41bb37da296e5d7803c7ea97d9320516cba7 | committed]
 -use font height for cursor
 -prefer 'descent to ascent' coverage as opposed to 'baseline plus
 way too high'!
 
-# fbtk,.textbox,.fix.selection.release.on.click.diff [git sha:2e9994de39dd64f9a4f1adfc6bb6df9307510983 | pending]
+# fbtk,.textbox,.fix.selection.release.on.click.diff [git sha:f19bb5787f8ec9e2faf3c30e366709a3c6087b96 | committed]
