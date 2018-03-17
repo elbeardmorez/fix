@@ -35,6 +35,8 @@
 
 # pluginswidgetbar,.workaround.'bizarre.loss.of.closure.state'.diff [git sha:409f5eefb6d78887f01fe596789e4b4febebfc97 | pending]
 
+# pluginswidgetbar,.dnd,.no.implicit.bytes.casting.diff [git sha:cc0b681bdf9aeabf49b0ab1260bb64d8fdcc42b7 | pending]
+
 # embeddedartwidgetbar,.fix.highlight.box.closure.context.diff [git sha:dc61feecc980ff65de1625b2007ea8931cfb1eef | pending]
 
 # embeddedartwidgetbar,.fix.no.selection.diff [git sha:2e6ab9bb0e9de4046691b537d240701462a4cb80 | pending]

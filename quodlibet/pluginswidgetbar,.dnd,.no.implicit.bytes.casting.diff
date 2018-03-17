@@ -1,0 +1,34 @@
+From cc0b681bdf9aeabf49b0ab1260bb64d8fdcc42b7 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sat, 17 Mar 2018 19:05:48 +0000
+Subject: pluginswidgetbar, dnd, no implicit bytes casting
+
+---
+ quodlibet/quodlibet/ext/events/plugins_widgetbar.py | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/quodlibet/quodlibet/ext/events/plugins_widgetbar.py b/quodlibet/quodlibet/ext/events/plugins_widgetbar.py
+index 9acadbd26..d0deb870e 100644
+--- a/quodlibet/quodlibet/ext/events/plugins_widgetbar.py
++++ b/quodlibet/quodlibet/ext/events/plugins_widgetbar.py
+@@ -209,15 +209,14 @@ class PluginsWidgetBarPluginDnDMixin(object):
+ 
+         if tid == DND_QL_PLUGIN:
+             type_ = Gdk.atom_intern("text/x-quodlibet-plugin", True)
+-            data.set(type_, 8, widget.drag_widget.id)
+-
++            data.set(type_, 8, widget.drag_widget.id.encode())
+         return True
+ 
+     def __drag_data_received(self, widget, ctx, x, y, data, info, etime):
+ 
+         if info == DND_QL_PLUGIN:
+             target = widget.drag_widget.id
+-            source = data.get_data()
++            source = data.get_data().decode()
+ #            side_desc = "left" if self.__drag_side == 0 else "right"
+ #            print_d("moving %r to %s of %r" % (source, side_desc, target))
+ 
+-- 
+2.14.1
+
