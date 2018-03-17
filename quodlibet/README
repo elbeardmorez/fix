@@ -12,6 +12,8 @@
 # fix.searching.for.special.escaped.character.on.nt.os.diff [git sha:7bf86c5d7bc39c3d5925be2105d9ce53957fbe11 | pending]
 -use RootPathFile containers to ease testing of escaped file parts
 
+# rename.property.'is_valid'.->.'valid'.diff [git sha:9f0ed16af53fcd5c8ced0f7b81046d09c20e2cb8 | pending]
+
 # fix.typo.diff [git sha:9466202d22c99e59f211234e3c65bbb92de49153 | pending]
 
 # remove.redundant.attribute.tests.diff [git sha:2c339bc164d47e9d08a5ee33e7163c18ae2c85aa | pending]

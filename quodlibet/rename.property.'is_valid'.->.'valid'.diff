@@ -1,0 +1,61 @@
+From 9f0ed16af53fcd5c8ced0f7b81046d09c20e2cb8 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sat, 17 Mar 2018 13:19:29 +0000
+Subject: rename property 'is_valid' -> 'valid'
+
+---
+ quodlibet/quodlibet/util/path.py       |  2 +-
+ quodlibet/tests/test_formats__audio.py | 10 +++++-----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/quodlibet/quodlibet/util/path.py b/quodlibet/quodlibet/util/path.py
+index c9adb4081..2a09e6d8d 100644
+--- a/quodlibet/quodlibet/util/path.py
++++ b/quodlibet/quodlibet/util/path.py
+@@ -481,7 +481,7 @@ class RootPathFile:
+         return os.path.sep.join([self.root, self.end_escaped])
+ 
+     @property
+-    def is_valid(self):
++    def valid(self):
+         valid = True
+         if os.path.exists(self.pathfile):
+             return valid
+diff --git a/quodlibet/tests/test_formats__audio.py b/quodlibet/tests/test_formats__audio.py
+index 48d67c444..f51de6e2a 100644
+--- a/quodlibet/tests/test_formats__audio.py
++++ b/quodlibet/tests/test_formats__audio.py
+@@ -546,9 +546,9 @@ class TAudioFile(TestCase):
+                 s['artist'] = path_variant + " SpongeBob SquarePants"
+                 parts = [root, s["artist"] + " - " + s["title"] + ".lyric"]
+                 rpf = RootPathFile(root, os.path.sep.join(parts))
+-                if not rpf.is_valid:
++                if not rpf.valid:
+                     rpf = RootPathFile(rpf.root, rpf.pathfile_escaped)
+-                self.assertTrue(rpf.is_valid,
++                self.assertTrue(rpf.valid,
+                                 "even escaped target file is not valid")
+                 with io.open(rpf.pathfile, "w", encoding='utf-8') as f:
+                     f.write(u"")
+@@ -575,15 +575,15 @@ class TAudioFile(TestCase):
+             # ensure valid dir existence
+             for p in rpf.end.split(os.path.sep)[:-1]:
+                 rootp = os.path.sep.join([root, p])
+-                if not RootPathFile(root, rootp).is_valid:
++                if not RootPathFile(root, rootp).valid:
+                     rootp = os.path.sep.join([root, escape_filename(p)])
+-                self.assertTrue(RootPathFile(root, rootp).is_valid,
++                self.assertTrue(RootPathFile(root, rootp).valid,
+                                 "even escaped target dir part is not valid!")
+                 if not os.path.exists(rootp):
+                     mkdir(rootp)
+                     rmdirs.append(rootp)
+ 
+-            if not rpf.is_valid:
++            if not rpf.valid:
+                 rpf = RootPathFile(rpf.root, rpf.pathfile_escaped)
+ 
+             with io.open(rpf.pathfile, "w", encoding='utf-8') as f:
+-- 
+2.14.1
+
