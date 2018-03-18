@@ -1,0 +1,30 @@
+From 40db52e3e9bef2eae496903de141d712fdfcfdc7 Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 18 Mar 2018 20:01:16 +0000
+Subject: embeddedartwidgetbar, fix 'clear' not updating ui
+
+---
+ quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py b/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py
+index 706d3f225..a88357169 100644
+--- a/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py
++++ b/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py
+@@ -822,10 +822,12 @@ class EmbeddedArtBox(Gtk.HBox):
+                 continue
+             try:
+                 s.clear_images()
+-                self._refresh([s])
+             except AudioFileError:
+                 print_exc()
+ 
++        self.__clear_covers()
++        self.update_counts()
++
+     def _remove_image(self):
+ 
+         for iw in self.get_selected_image_widgets():
+-- 
+2.14.1
+
