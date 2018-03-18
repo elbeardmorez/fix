@@ -5,14 +5,14 @@
 
 # replace.'nix.only.'samefile'.function.diff [git sha:75202a669d610aec44d76a991f06c3401deb6ae4 | committed]
 
-# fix.default.search.path.for.non.'nix.diff [git sha:698294bd9f27381fed2cf632795cef7f9fe82e46 | pending]
+# fix.default.search.path.for.non.'nix.diff [git sha:9c53f4e4fe7b48936d35dfb8a5d181fb8ed7d34b | committed]
 
-# fix.nt.url.encoding_decoding.bug.in.test.diff [git sha:a2d90edf59b6c709d9997ca27cc0bb22fe347db4 | pending]
+# fix.nt.url.encoding_decoding.bug.in.test.diff [git sha:9c53f4e4fe7b48936d35dfb8a5d181fb8ed7d34b | committed]
 
-# fix.searching.for.special.escaped.character.on.nt.os.diff [git sha:7bf86c5d7bc39c3d5925be2105d9ce53957fbe11 | pending]
+# fix.searching.for.special.escaped.character.on.nt.os.diff [git sha:9c53f4e4fe7b48936d35dfb8a5d181fb8ed7d34b | committed]
 -use RootPathFile containers to ease testing of escaped file parts
 
-# rename.property.'is_valid'.->.'valid'.diff [git sha:9f0ed16af53fcd5c8ced0f7b81046d09c20e2cb8 | pending]
+# rename.property.'is_valid'.->.'valid'.diff [git sha:9c53f4e4fe7b48936d35dfb8a5d181fb8ed7d34b | committed]
 
 # fix.typo.diff [git sha:9466202d22c99e59f211234e3c65bbb92de49153 | pending]
 
