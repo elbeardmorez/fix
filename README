@@ -99,6 +99,7 @@ a dumping ground for patches which fix functionality
 -embeddedartwidgetbar,.fix.no.selection.diff [git sha:2e6ab9bb0e9de4046691b537d240701462a4cb80 | pending]
 -embeddedartwidgetbar,.fix.selection.based.control.sensitivity.diff [git sha:8245387a9cc74b20c150f52ea0b09bd7b3dfde85 | pending]
 -embeddedartwidgetbar,.fix.highlight.box.toggle.diff [git sha:ef792f364ffdf596eff14c5b93fa07858b89112a | pending]
+-embeddedartwidgetbar,.python3.compatibility.diff [git sha:5e3efb554c730484646bba84a44bac2729abbc77 | pending]
 
 ### fluxbox
 -fbtk,.textbox,.fix.text.vertical.centering.diff [git sha:79ce3ef424754d65081957121dcbe6efbc1885d2 | committed]

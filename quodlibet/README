@@ -44,3 +44,5 @@
 # embeddedartwidgetbar,.fix.selection.based.control.sensitivity.diff [git sha:8245387a9cc74b20c150f52ea0b09bd7b3dfde85 | pending]
 
 # embeddedartwidgetbar,.fix.highlight.box.toggle.diff [git sha:ef792f364ffdf596eff14c5b93fa07858b89112a | pending]
+
+# embeddedartwidgetbar,.python3.compatibility.diff [git sha:5e3efb554c730484646bba84a44bac2729abbc77 | pending]
