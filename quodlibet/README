@@ -48,3 +48,5 @@
 # embeddedartwidgetbar,.python3.compatibility.diff [git sha:5e3efb554c730484646bba84a44bac2729abbc77 | pending]
 
 # embeddedartwidgetbar,.fix.'clear'.not.updating.ui.diff [git sha:40db52e3e9bef2eae496903de141d712fdfcfdc7 | pending]
+
+# embeddedartwidgetbar,.fix.max.images.bug.diff [git sha:ef12895cb1c26747e7937f9e7882a5f18d1ccbbb | pending]

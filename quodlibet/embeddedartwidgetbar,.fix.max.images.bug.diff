@@ -1,0 +1,25 @@
+From ef12895cb1c26747e7937f9e7882a5f18d1ccbbb Mon Sep 17 00:00:00 2001
+From: Pete Beardmore <pete.beardmore@msn.com>
+Date: Sun, 1 Apr 2018 15:11:34 +0100
+Subject: embeddedartwidgetbar, fix max images bug
+
+---
+ quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py b/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py
+index 722b21001..800dabd81 100644
+--- a/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py
++++ b/quodlibet/quodlibet/ext/covers/embeddedart_widgetbar.py
+@@ -731,7 +731,7 @@ class EmbeddedArtBox(Gtk.HBox):
+         imageitems = self.__get_artwork(song)
+ 
+         if len(self.image_widgets) + len(imageitems) >= self.covers_max:
+-            if self.image_widgets < self.covers_max:
++            if len(self.image_widgets) < self.covers_max:
+                 imageitems = imageitems[:self.covers_max -
+                                          len(self.image_widgets)]
+ 
+-- 
+2.14.1
+
