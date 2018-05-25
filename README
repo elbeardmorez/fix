@@ -89,6 +89,7 @@ a dumping ground for patches which fix functionality
 -fix.no-op.bug.diff [git sha:75dafbaba8f80a550df3220e01571cfd2468f636 | pending]
 -fix.harmonisation.of.initial.pane.sort.order.diff [git sha:98d0583d539dcad75bb1f758f6e1b88dfe4829cd | pending]
 -update.licence.info.on.new.files.diff [git sha:8de09c1ee1c2e6a52a96e08c8580bcde90d27270 | pending]
+-widgetbars,.fix.incorrect.parameter.name.in.multipaned.diff [git sha:14df932628474578da42d119cf2bef8e6ea95d32 | pending]
 -coverswidgetbar,.fix.reading.of.adjustments.diff [git sha:751e005fec6dc88a0a4399db08062e2755225367 | pending]
 -coverswidgetbar,.fix.'ignore.in.last'.feature.diff [git sha:6fd9245038b7fefd9c5a855960ae9ccb12cf3b67 | pending]
 -coverswidgetbar,.fix.file.name.generation.for.non-ascii.titles.diff [git sha:16c9dea940825e2cd9b8f06a34a3b0fae229d837 | pending]
